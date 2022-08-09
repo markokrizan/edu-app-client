@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.0",
+    "bootstrap-icons": "^1.9.1",
     "sirv-cli": "^2.0.0",
     "svelte-navigator": "^3.1.6"
   }

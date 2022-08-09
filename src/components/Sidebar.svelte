@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { Link } from "svelte-navigator";
+	import { Link, } from "svelte-navigator";
+
+  function getProps({ isCurrent }) {
+		if (isCurrent) {
+			return { class: "nav-link text-white active" };
+		}
+
+		return { class: 'nav-link text-white' };
+	}
 </script>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
@@ -10,32 +18,32 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <Link to="/courses" class="nav-link active" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+        <Link to="/courses" {getProps} aria-current="page">
+          <i class="bi bi-window-split"></i>
           Courses
         </Link>
       </li>
       <li class="nav-item">
-        <Link to="/courses/1" class="nav-link text-white" aria-current="page">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+        <Link to="/courses/1" {getProps} aria-current="page">
+          <i class="bi bi-window-split"></i>
           Courses/1
         </Link>
       </li>
       <li>
-        <Link to="/exams" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+        <Link to="/exams" {getProps}>
+          <i class="bi bi-window-split"></i>
           Exams
         </Link>
       </li>
       <li>
-        <Link to="/teachers" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+        <Link to="/teachers" {getProps}>
+          <i class="bi bi-window-split"></i>
           Teachers
         </Link>
       </li>
       <li>
-        <Link to="/terms" class="nav-link text-white">
-          <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+        <Link to="/terms" {getProps}>
+          <i class="bi bi-window-split"></i>
           Terms
         </Link>
       </li>

@@ -52,6 +52,14 @@ export default {
 				{
 					src: 'node_modules/bootstrap/dist/**/*',
 					dest: 'public/vendor/bootstrap'
+				},
+				{
+					src: 'node_modules/bootstrap-icons/font/bootstrap-icons.css',
+					dest: 'public/vendor/bootstrap-icons'
+				},
+				{
+					src: 'node_modules/bootstrap-icons/font/fonts/**',
+					dest: 'public/vendor/bootstrap-icons/fonts'
 				}
 			]
 		}),
