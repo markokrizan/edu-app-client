@@ -11,7 +11,7 @@
 				<div class="col-2 p-0">
 					<Sidebar />
 				</div>
-				<div class="col-10">
+				<div class="col-10 py-2">
 					<Routes />
 				</div>
 			</div>

@@ -1,13 +1,11 @@
 <script lang="ts">
 	import { Route } from "svelte-navigator";
-	import SingleCourse from "./pages/SingleCourse.svelte";
+    import Courses from "./pages/courses/Courses.svelte";
+	import Course from "./pages/Course.svelte";
 </script>
 
-<Route path="courses">
-    <h3>Courses</h3>
-</Route>
-
-<Route path="courses/*id" component={SingleCourse} />
+<Route path="courses" component={Courses} />
+<Route path="courses/*id" component={Course} />
 
 <Route path="exams">
     <h3>Exams</h3>
