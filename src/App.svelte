@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Router } from "svelte-navigator";
-	import Sidebar from "./components/Sidebar.svelte";
+	import Sidebar from "./components/sidebar/Sidebar.svelte";
 	import Routes from "./Routes.svelte";
 </script>
 
