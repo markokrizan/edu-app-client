@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Route } from "svelte-navigator";
     import Courses from "./pages/courses/Courses.svelte";
-	import Course from "./pages/Course.svelte";
+	import Course from "./pages/courses/Course.svelte";
 </script>
 
 <Route path="courses" component={Courses} />
