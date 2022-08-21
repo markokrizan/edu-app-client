@@ -2,17 +2,15 @@
 	import { Route } from "svelte-navigator";
     import Courses from "./pages/courses/Courses.svelte";
 	import Course from "./pages/courses/Course.svelte";
+import Teachers from "./pages/courses/Teachers.svelte";
 </script>
 
 <Route path="courses" component={Courses} />
 <Route path="courses/*id" component={Course} />
+<Route path="teachers" component={Teachers} />
 
 <Route path="exams">
     <h3>Exams</h3>
-</Route>
-
-<Route path="teachers">
-    <h3>Teachers</h3>
 </Route>
 
 <Route path="terms">
@@ -22,4 +20,3 @@
 <Route>
     <h3>Default dashboard route</h3>
 </Route>
-
