@@ -1,5 +1,5 @@
 <script lang="ts">
-    import TeacherCard from "../../components/teacher/TeacherCard.svelte";
+    import TeacherCard from "../components/teacher/TeacherCard.svelte";
 
 	const DUMMY_TEACHERS = [
         {
@@ -15,7 +15,7 @@
                 name: "ROLE_TEACHER",
             },
             academicTitle: "PhD",
-            profileImage: "assets/user-profile-icon.jpg"
+            profileImage: "/assets/user-profile-icon.jpg"
         },
         {
             
@@ -31,7 +31,7 @@
                 name: "ROLE_TEACHER",
             },
             academicTitle: "Mr",
-            profileImage: "assets/user-profile-icon.jpg"
+            profileImage: "/assets/user-profile-icon.jpg"
         }
     ]
 </script>

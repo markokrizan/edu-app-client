@@ -1,5 +1,5 @@
 <script>
-    import Course from "../../components/course/Course.svelte";
+    import Course from "../components/course/Course.svelte";
 
     export let id;
 

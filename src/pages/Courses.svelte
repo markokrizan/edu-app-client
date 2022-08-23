@@ -1,5 +1,5 @@
 <script lang="ts">
-    import CourseCard from "../../components/course/CourseCard.svelte";
+    import CourseCard from "../components/course/CourseCard.svelte";
 
 	const DUMMY_COURSES = [
         {
