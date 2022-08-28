@@ -4,21 +4,15 @@
 	import Course from "./pages/Course.svelte";
     import Teachers from "./pages/Teachers.svelte";
     import Teacher from "./pages/Teacher.svelte";
+    import AdminExams from "./pages/AdminExams.svelte";
 </script>
 
 <Route path="courses" component={Courses} />
 <Route path="courses/*id" component={Course} />
 <Route path="teachers" component={Teachers} />
 <Route path="teachers/*id" component={Teacher} />
-
-<Route path="exams">
-    <h3>Exams</h3>
-</Route>
-
-<Route path="terms">
-    <h3>Terms</h3>
-</Route>
+<Route path="admin/exams" component={AdminExams} />
 
 <Route>
-    <h3>Default dashboard route</h3>
+    <h3>Not found</h3>
 </Route>

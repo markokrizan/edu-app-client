@@ -8,7 +8,7 @@
 
     const location = useLocation();
 
-    $: isCurrent = $location.pathname === path;
+    $: isCurrent = $location.pathname.includes(path);
 </script>
 
 <li class="nav-item">

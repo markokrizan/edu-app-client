@@ -9,19 +9,14 @@
       path: '/courses'
     },
     {
-      label: 'Exams',
+      label: 'Exams (Only admin)',
       iconClass: 'bi bi-clipboard-check fs-4',
-      path: '/exams'
+      path: 'admin/exams'
     },
     {
       label: 'Teachers',
       iconClass: 'bi bi-file-person fs-4',
       path: '/teachers'
-    },
-    {
-      label: 'Terms',
-      iconClass: 'bi bi-calendar-check fs-4',
-      path: '/terms'
     }
   ]
 
