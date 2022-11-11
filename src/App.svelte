@@ -1,20 +1,19 @@
 <script lang="ts">
-	import { Router } from "svelte-navigator";
-	import Sidebar from "./components/sidebar/Sidebar.svelte";
+	import { navigate, Router } from "svelte-navigator";
 	import Routes from "./Routes.svelte";
+    import { userStore } from "./store";
+
+	const token = userStore.getToken();
+
+	if (!$token) {
+		navigate('/login')
+	}
 </script>
 
 <Router>
 	<main class="h-100">
 		<div class="container-fluid h-100">
-			<div class="row h-100">
-				<div class="col-2 p-0">
-					<Sidebar />
-				</div>
-				<div class="col-10 py-2">
-					<Routes />
-				</div>
-			</div>
+			<Routes />
 		</div>
 	</main>
 </Router>

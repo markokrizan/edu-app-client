@@ -1,5 +1,6 @@
 <script>
     import Course from "../components/course/Course.svelte";
+    import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
     export let id;
 
@@ -59,4 +60,6 @@
     };
 </script>
 
-<Course course={COURSE_DUMMY_DATA} />
+<PrivateLayout>
+    <Course course={COURSE_DUMMY_DATA} />
+</PrivateLayout>

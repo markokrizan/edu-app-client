@@ -1,5 +1,6 @@
 <script lang="ts">
     import CourseCard from "../components/course/CourseCard.svelte";
+    import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
 	const DUMMY_COURSES = [
         {
@@ -47,10 +48,12 @@
     ]
 </script>
 
-<h2>Courses</h2>
+<PrivateLayout>
+    <h2>Courses</h2>
 
-<div class="row row-cols-lg-auto">
-    {#each DUMMY_COURSES as course}
-        <CourseCard course={course} /> 
-    {/each}
-</div>
+    <div class="row row-cols-lg-auto">
+        {#each DUMMY_COURSES as course}
+            <CourseCard course={course} /> 
+        {/each}
+    </div>
+</PrivateLayout>

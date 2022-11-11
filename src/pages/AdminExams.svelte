@@ -1,5 +1,6 @@
 <script lang="ts">
     import Table from "../components/common/Table.svelte";
+    import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
     const DUMMY_EXAM_DATA = [
         {
@@ -44,6 +45,8 @@
     }
 </script>
 
-<h2>Exams</h2>
+<PrivateLayout>
+    <h2>Exams</h2>
 
-<Table tableData={tableData} />
+    <Table tableData={tableData} />
+</PrivateLayout>

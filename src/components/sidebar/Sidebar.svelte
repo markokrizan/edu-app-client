@@ -11,7 +11,7 @@
     {
       label: 'Exams (Only admin)',
       iconClass: 'bi bi-clipboard-check fs-4',
-      path: 'admin/exams'
+      path: '/admin/exams'
     },
     {
       label: 'Teachers',

@@ -1,5 +1,6 @@
 <script>
     import Teacher from "../components/teacher/Teacher.svelte";
+    import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
     export let id;
 
@@ -44,4 +45,6 @@
     };
 </script>
 
-<Teacher teacher={DUMMY_TEACHER} />
+<PrivateLayout>
+    <Teacher teacher={DUMMY_TEACHER} />
+</PrivateLayout>

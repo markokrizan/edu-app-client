@@ -1,5 +1,6 @@
 <script lang="ts">
     import TeacherCard from "../components/teacher/TeacherCard.svelte";
+    import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
 	const DUMMY_TEACHERS = [
         {
@@ -36,10 +37,12 @@
     ]
 </script>
 
-<h2>Teachers</h2>
+<PrivateLayout>
+    <h2>Teachers</h2>
 
-<div class="row row-cols-lg-auto">
-    {#each DUMMY_TEACHERS as teacher}
-        <TeacherCard teacher={teacher} /> 
-    {/each}
-</div>
+    <div class="row row-cols-lg-auto">
+        {#each DUMMY_TEACHERS as teacher}
+            <TeacherCard teacher={teacher} /> 
+        {/each}
+    </div>
+</PrivateLayout>
