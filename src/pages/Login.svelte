@@ -1,5 +1,6 @@
 <script lang="ts">
     import { navigate } from "svelte-navigator";
+    import LoginForm from "../components/forms/LoginForm.svelte";
     import PublicLayout from "../layouts/PublicLayout.svelte";
     import { userStore } from "../store";
 
@@ -11,5 +12,7 @@
 </script>
 
 <PublicLayout>
-    <p>Login page</p>
+    <div class="d-flex justify-content-center align-items-center">
+        <LoginForm/>
+    </div>
 </PublicLayout>

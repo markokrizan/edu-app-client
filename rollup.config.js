@@ -33,6 +33,18 @@ function serve() {
 	};
 }
 
+const buildEnvVariables = () => {
+	const configKeys = Object.keys(config().parsed);
+
+	let replacement = {};
+
+	for (const key of configKeys) {
+		replacement[`process.env.${key}`] = production ? process.env[key] : JSON.stringify(config().parsed[key]);
+	}
+
+	return replacement;
+}
+
 export default {
 	input: 'src/main.ts',
 	output: {
@@ -84,13 +96,9 @@ export default {
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-		replace({      
-			process: JSON.stringify({
-				env: {
-					isProd: production,
-					...config().parsed
-				} 
-			})
+		replace({
+			preventAssignment: true,
+			values: buildEnvVariables(),
 		}),
 
 		// In dev mode, call `npm run start` once
