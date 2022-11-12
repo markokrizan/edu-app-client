@@ -2,11 +2,9 @@
     import { navigate } from "svelte-navigator";
     import LoginForm from "../components/forms/LoginForm.svelte";
     import PublicLayout from "../layouts/PublicLayout.svelte";
-    import { userStore } from "../store";
+    import authService from "../services/authService";
 
-    const token = userStore.getToken();
-
-	if ($token) {
+	if (authService.isLoggedIn()) {
 		navigate('/profile')
 	}
 </script>

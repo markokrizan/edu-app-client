@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { Link, } from "svelte-navigator";
+	import { Link, navigate, } from "svelte-navigator";
+  import authService from "../../services/authService";
+  import { userStore } from "../../store";
   import SidebarItem from "./SidebarItem.svelte";
 
   const SIDEBAR_ITEMS = [
@@ -20,10 +22,15 @@
     }
   ]
 
-  function handleLogout() {
-    // TODO: Implement logout
-    console.log('logout');
+  const handleLogout = () => {
+    authService.logout();
+
+    navigate('/login')
   }
+
+  const user = userStore.getUser();
+
+  $: userFullName = `${$user?.firstName} ${$user?.lastName}`;
 </script>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
@@ -41,7 +48,7 @@
   <div class="dropdown">
     <div role="button" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
       <img src="/assets/user-profile-icon.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-      <strong>User name</strong>
+      <strong>{userFullName}</strong>
     </div>
     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
       <li><Link class="dropdown-item" to="/profile">Profile</Link></li>

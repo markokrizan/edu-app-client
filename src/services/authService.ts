@@ -1,7 +1,6 @@
 import httpService, { HttpServiceInterface } from "./httpService";
 import { userStore } from '../store';
 import type { UserStoreInterface } from "../store/user";
-import { navigate } from "svelte-navigator";
 
 class AuthService {
     httpService: HttpServiceInterface
@@ -10,34 +9,54 @@ class AuthService {
     constructor(httpService: HttpServiceInterface, userStore: UserStoreInterface) {
         this.httpService = httpService;
         this.userStore = userStore;
+
+        httpService.setBaseHeaders({
+            'Content-Type': 'application/json'
+        })
+
+        this.loadCurrentUser();
     }
 
     async login(username: string, password: string): Promise<void> {
         const { accessToken } = await this.httpService.request({
-            url: '/api/signin',
+            url: 'api/auth/signin',
             method: 'POST',
-            body: {
+            body: JSON.stringify({
                 username,
                 password
-            }
+            })
         })
 
         localStorage.setItem('accessToken', accessToken);
 
         this.userStore.setToken(accessToken);
 
-        const user = await this.httpService.request({
-            url: '/api/users/me',
-            method: 'GET',
-            body: {
-                username,
-                password
-            }
-        })
+        this.loadCurrentUser();
+    }
+
+    isLoggedIn(): boolean {
+        return !!localStorage.getItem('accessToken');
+    }
+
+    async loadCurrentUser(): Promise<any> {
+        if (!this.isLoggedIn()) {
+            return;
+        }
+
+        const user = await this.httpService
+            .withAuth()
+            .request({
+                url: 'api/users/me',
+                method: 'GET'
+            })
 
         this.userStore.setUser(user);
+    }
 
-        navigate('/profile');
+    logout() {
+        localStorage.removeItem('accessToken');
+        this.userStore.setUser(null);
+        this.userStore.setToken(null);
     }
 }
 
