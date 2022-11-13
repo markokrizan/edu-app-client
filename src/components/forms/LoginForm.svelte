@@ -52,6 +52,7 @@
         value={form?.password}
         error={errors?.password}
         class="mt-2"
+        variant="password"
     />
     <button 
         class="btn btn-primary mt-2" 
