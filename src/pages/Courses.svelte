@@ -2,66 +2,48 @@
     import CourseCard from "../components/course/CourseCard.svelte";
     import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
-    import { useQuery } from "@sveltestack/svelte-query";
+    import Pager from "../components/common/Pager.svelte";
     import httpService from "../services/httpService";
 
-    const courses = useQuery('courses', async () => {
-        return await httpService
+    const fetchCourses = (page) => {
+        return httpService
             .withAuth()
-            .request({ method: 'GET', url: 'api/courses'});
-    });
+            .request({ method: 'GET', url: `api/courses?page=${page}`});
+    }
 
-	const DUMMY_COURSES = [
-        {
-            id: 1,
-            name: 'E education',
-            year: 'FIRST',
-            semester: 'SUMMER',
-            espbPoints: 4
-        },
-        {
-            id: 2,
-            name: 'DB administration',
-            year: 'SECOND',
-            semester: 'SUMMER',
-            espbPoints: 5
-        },
-        {
-            id: 3,
-            name: 'Web development',
-            year: 'THIRD',
-            semester: 'WINTER',
-            espbPoints: 6
-        },
-        {
-            id: 4,
-            name: 'Mobile app development',
-            year: 'FOURTH',
-            semester: 'WINTER',
-            espbPoints: 4
-        },
-        {
-            id: 4,
-            name: 'Mobile app development',
-            year: 'FOURTH',
-            semester: 'WINTER',
-            espbPoints: 4
-        },
-        {
-            id: 4,
-            name: 'Mobile app development',
-            year: 'FOURTH',
-            semester: 'WINTER',
-            espbPoints: 4
-        }
-    ]
 </script>
 
 <PrivateLayout>
     <h2>Courses</h2>
-    <div class="row row-cols-lg-auto">
-        {#each $courses?.data?.content || [] as course}
-            <CourseCard course={course} /> 
-        {/each}
-    </div>
+    <Pager 
+        fetchFn={fetchCourses} 
+        queryKey="courses" 
+        queryOptions={{ refetchOnMount: false }} 
+        let:pages
+        let:hasNextPage
+        let:fetchNextPage
+        let:disabled
+        let:isFetching
+    >
+        <div class="row row-cols-lg-auto">
+            {#each pages as page}
+                {#each page.content as item}
+                    <CourseCard course={item} />
+                {/each}
+            {/each}
+        </div>
+        {#if hasNextPage}
+            <button
+                class="btn btn-primary"
+                on:click={fetchNextPage}
+                disabled={disabled}
+            >
+                {#if isFetching}
+                    Loading more...
+                {:else} 
+                    Load More 
+                {/if}
+            </button>
+        {/if}
+    </Pager>
 </PrivateLayout>
