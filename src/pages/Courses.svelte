@@ -2,6 +2,15 @@
     import CourseCard from "../components/course/CourseCard.svelte";
     import PrivateLayout from "../layouts/PrivateLayout.svelte";
 
+    import { useQuery } from "@sveltestack/svelte-query";
+    import httpService from "../services/httpService";
+
+    const courses = useQuery('courses', async () => {
+        return await httpService
+            .withAuth()
+            .request({ method: 'GET', url: 'api/courses'});
+    });
+
 	const DUMMY_COURSES = [
         {
             id: 1,
@@ -50,9 +59,8 @@
 
 <PrivateLayout>
     <h2>Courses</h2>
-
     <div class="row row-cols-lg-auto">
-        {#each DUMMY_COURSES as course}
+        {#each $courses?.data?.content || [] as course}
             <CourseCard course={course} /> 
         {/each}
     </div>
