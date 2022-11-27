@@ -18,15 +18,15 @@
 >
     <HoverableInteraction let:isHovered>
         <div class="card card-container col m-4 {isHovered ? 'shadow' : '' }">
-            <img src="{teacher.profileImage}" class="card-img-top" alt="...">
+            <img src="{teacher.profileImage || '/assets/user-profile-icon.jpg'}" class="card-img-top" alt="Teacher profile">
             <div class="card-body">
                 <h5 class="card-title">{teacher.firstName} {teacher.lastName} {teacher.academicTitle}</h5>
                 <dl>
                     <dt>Email:</dt>
-                    <dd>{teacher.email}</dd>
+                    <dd>{teacher.email ?? ''}</dd>
 
                     <dt>Phone number:</dt>
-                    <dd>{teacher.phoneNumber}</dd>
+                    <dd>{teacher.phoneNumber ?? ''}</dd>
                 </dl>
             </div>
         </div>
