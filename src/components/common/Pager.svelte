@@ -5,7 +5,8 @@
     export let queryKey;
     export let queryOptions = {};
     
-    const queryResult = useInfiniteQuery(
+    // TODO: Provide typing
+    const queryResult = useInfiniteQuery<any, any, any, any>(
         queryKey, 
         async ({ pageParam = 0 }) => await fetchFn(pageParam), 
         {
