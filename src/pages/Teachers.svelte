@@ -17,32 +17,16 @@
     <Pager
         fetchFn={fetchTeachers} 
         queryKey="teachers" 
-        queryOptions={{ refetchOnMount: false }} 
-        let:pages
-        let:hasNextPage
-        let:fetchNextPage
-        let:disabled
-        let:isFetching
+        queryOptions={{ refetchOnMount: false }}
     >
-        <div class="row row-cols-lg-auto">
-            {#each pages as page}
-                {#each page.content as item}
-                    <TeacherCard teacher={item} /> 
+        <svelte:fragment slot="pages" let:pages>
+            <div class="row row-cols-lg-auto">
+                {#each pages as page}
+                    {#each page.content as item}
+                        <TeacherCard teacher={item} />
+                    {/each}
                 {/each}
-            {/each}
-        </div>
-        {#if hasNextPage}
-            <button
-                class="btn btn-primary"
-                on:click={fetchNextPage}
-                disabled={disabled}
-            >
-                {#if isFetching}
-                    Loading more...
-                {:else} 
-                    Load More 
-                {/if}
-            </button>
-        {/if}
+            </div>
+        </svelte:fragment>
     </Pager>
 </PrivateLayout>

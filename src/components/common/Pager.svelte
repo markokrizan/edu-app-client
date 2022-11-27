@@ -31,11 +31,29 @@
 {:else if $queryResult?.status === 'error'}
     Error: {$queryResult?.error?.message}
 {:else}
-    <slot 
+    <slot
+        name="pages"
         pages={$queryResult?.data.pages} 
-        hasNextPage={$queryResult.hasNextPage}
-        fetchNextPage={() => $queryResult.fetchNextPage()}
-        disabled={$queryResult.isFetchingNextPage}
-        isFetching={$queryResult.isFetching}
     />
+    {#if $queryResult.hasNextPage}
+        {#if $$slots.pager}
+            <slot
+                name="pager"
+                fetchNextPage={() => $queryResult.fetchNextPage()}
+                isLoading={$queryResult.isFetchingNextPage}
+            />
+        {:else}
+            <button
+                class="btn btn-primary"
+                on:click={() => $queryResult.fetchNextPage()}
+                disabled={$queryResult.isFetchingNextPage}
+            >
+                {#if $queryResult.isFetchingNextPage}
+                    Loading more...
+                {:else} 
+                    Load More 
+                {/if}
+            </button>
+        {/if}
+    {/if}
 {/if}
