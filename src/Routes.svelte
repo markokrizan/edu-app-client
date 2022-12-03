@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { navigate, useLocation } from "svelte-navigator";
+
 	import { Route } from "svelte-navigator";
     import Courses from "./pages/Courses.svelte";
 	import Course from "./pages/Course.svelte";
@@ -8,6 +10,12 @@
     import Login from "./pages/Login.svelte";
     import NotFound from "./pages/NotFound.svelte";
     import UserProfile from "./pages/UserProfile.svelte";
+    
+    const location = useLocation();
+
+    if ($location?.pathname === '/') {
+        navigate('/profile');
+    }
 </script>
 
 <Route path="profile" component={UserProfile} />
