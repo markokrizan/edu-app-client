@@ -11,6 +11,11 @@
       path: '/study-programs'
     },
     {
+      label: 'Terms',
+      iconClass: 'bi bi-calendar-check fs-4',
+      path: '/terms'
+    },
+    {
       label: 'Courses',
       iconClass: 'bi bi-book fs-4',
       path: '/courses'

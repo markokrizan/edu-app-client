@@ -11,6 +11,7 @@
     import NotFound from "./pages/NotFound.svelte";
     import UserProfile from "./pages/UserProfile.svelte";
     import StudyPrograms from "./pages/StudyPrograms.svelte";
+    import Terms from "./pages/Terms.svelte";
     
     const location = useLocation();
 
@@ -28,4 +29,5 @@
 <Route path="admin/exams" component={AdminExams} />
 <Route path="admin/exams" component={AdminExams} />
 <Route path="/study-programs" component={StudyPrograms} />
+<Route path="/terms" component={Terms} />
 <Route component={NotFound} />
