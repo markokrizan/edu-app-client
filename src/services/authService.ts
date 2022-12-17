@@ -1,6 +1,7 @@
 import httpService, { HttpServiceInterface } from "./httpService";
 import { userStore } from '../store';
 import type { UserStoreInterface } from "../store/user";
+import { navigate } from "svelte-navigator";
 
 class AuthService {
     httpService: HttpServiceInterface
@@ -43,14 +44,22 @@ class AuthService {
             return;
         }
 
-        const user = await this.httpService
-            .withAuth()
-            .request({
-                url: 'api/users/me',
-                method: 'GET'
-            })
+        try {
+            const user = await this.httpService
+                .withAuth()
+                .request({
+                    url: 'api/users/me',
+                    method: 'GET'
+                })
 
-        this.userStore.setUser(user);
+            this.userStore.setUser(user);
+        } catch (e) {
+            if (e.status === 401) {
+                localStorage.removeItem('accessToken');
+
+                navigate('/login');
+            }
+        }
     }
 
     logout() {
