@@ -10,6 +10,7 @@
     import Login from "./pages/Login.svelte";
     import NotFound from "./pages/NotFound.svelte";
     import UserProfile from "./pages/UserProfile.svelte";
+    import StudyPrograms from "./pages/StudyPrograms.svelte";
     
     const location = useLocation();
 
@@ -26,4 +27,5 @@
 <Route path="teachers/*id" component={Teacher} />
 <Route path="admin/exams" component={AdminExams} />
 <Route path="admin/exams" component={AdminExams} />
+<Route path="/study-programs" component={StudyPrograms} />
 <Route component={NotFound} />

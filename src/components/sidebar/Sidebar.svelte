@@ -6,6 +6,11 @@
 
   const SIDEBAR_ITEMS = [
     {
+      label: 'Study Programs',
+      iconClass: 'bi bi-bookmark-star fs-4',
+      path: '/study-programs'
+    },
+    {
       label: 'Courses',
       iconClass: 'bi bi-book fs-4',
       path: '/courses'
