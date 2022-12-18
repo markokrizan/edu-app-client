@@ -12,6 +12,8 @@
     import UserProfile from "./pages/UserProfile.svelte";
     import StudyPrograms from "./pages/StudyPrograms.svelte";
     import Terms from "./pages/Terms.svelte";
+    import Students from "./pages/Students.svelte";
+    import Student from "./pages/Student.svelte";
     
     const location = useLocation();
 
@@ -26,6 +28,8 @@
 <Route path="courses/*id" component={Course} />
 <Route path="teachers" component={Teachers} />
 <Route path="teachers/*id" component={Teacher} />
+<Route path="students" component={Students} />
+<Route path="students/*id" component={Student} />
 <Route path="admin/exams" component={AdminExams} />
 <Route path="admin/exams" component={AdminExams} />
 <Route path="/study-programs" component={StudyPrograms} />

@@ -29,6 +29,11 @@
       label: 'Teachers',
       iconClass: 'bi bi-file-person fs-4',
       path: '/teachers'
+    },
+    {
+      label: 'Students',
+      iconClass: 'bi bi-people fs-4',
+      path: '/students'
     }
   ]
 
