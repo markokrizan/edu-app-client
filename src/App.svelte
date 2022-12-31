@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { navigate, Router } from "svelte-navigator";
 	import { QueryClient, QueryClientProvider } from '@sveltestack/svelte-query'
-	import Routes from "./Routes.svelte";
+	import Routes from "./router/Routes.svelte";
     import { userStore } from "./store";
 
 	const token = userStore.getToken();

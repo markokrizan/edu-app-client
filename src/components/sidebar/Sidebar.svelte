@@ -1,41 +1,9 @@
 <script lang="ts">
 	import { Link, navigate, } from "svelte-navigator";
+  import ROUTES from "../../router/config";
   import authService from "../../services/authService";
   import { userStore } from "../../store";
   import SidebarItem from "./SidebarItem.svelte";
-
-  const SIDEBAR_ITEMS = [
-    {
-      label: 'Study Programs',
-      iconClass: 'bi bi-bookmark-star fs-4',
-      path: '/study-programs'
-    },
-    {
-      label: 'Terms',
-      iconClass: 'bi bi-calendar-check fs-4',
-      path: '/terms'
-    },
-    {
-      label: 'Courses',
-      iconClass: 'bi bi-book fs-4',
-      path: '/courses'
-    },
-    {
-      label: 'Exams (Only admin)',
-      iconClass: 'bi bi-clipboard-check fs-4',
-      path: '/admin/exams'
-    },
-    {
-      label: 'Teachers',
-      iconClass: 'bi bi-file-person fs-4',
-      path: '/teachers'
-    },
-    {
-      label: 'Students',
-      iconClass: 'bi bi-people fs-4',
-      path: '/students'
-    }
-  ]
 
   const handleLogout = () => {
     authService.logout();
@@ -46,6 +14,7 @@
   const user = userStore.getUser();
 
   $: userFullName = `${$user?.firstName} ${$user?.lastName}`;
+  $: role = $user.roles.map(role => role.name)[0];
 </script>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
@@ -55,8 +24,10 @@
   </Link>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
-    {#each SIDEBAR_ITEMS as sidebarItem}
-      <SidebarItem {...sidebarItem} /> 
+    {#each ROUTES as route}
+      {#if route.accessibleViaSidebar && Object.keys(route.components).includes(role)} 
+        <SidebarItem path={route.path} iconClass={route.sidebarIconClass} label={route.name} /> 
+      {/if}
     {/each}
   </ul>
   <hr>
