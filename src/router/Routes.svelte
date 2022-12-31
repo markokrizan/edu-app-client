@@ -15,7 +15,7 @@
 
     const user = userStore.getUser();
 
-    $: role = $user.roles?.map(role => role.name)[0];
+    $: role = $user.roles?.map(role => role?.name)[0];
 </script>
 
 {#each ROUTES as route }

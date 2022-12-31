@@ -6,7 +6,6 @@ import Students from "../pages/Students.svelte";
 import StudyPrograms from "../pages/StudyPrograms.svelte";
 import Teachers from "../pages/Teachers.svelte";
 import Terms from "../pages/Terms.svelte";
-import Login from "../pages/Login.svelte";
 import UserProfile from "../pages/UserProfile.svelte";
 import Course from "../pages/Course.svelte";
 import Teacher from "../pages/Teacher.svelte";
