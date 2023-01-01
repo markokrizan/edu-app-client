@@ -1,16 +1,21 @@
 <script lang="ts">
+    import httpService from "../../services/httpService";
     import Grades from "./Grades.svelte";
 
     export let student;
 </script>
- 
+
 <div class="row">
     <h2>{student.firstName} {student.lastName}</h2>
 </div>
 
 <div class="row">
-    <div class="col-md-4">   
-        <img src="{student.profileImage || '/assets/user-profile-icon.jpg'}" class="img-fluid mb-3" alt="Student profile">
+    <div class="col-md-4">
+        <img
+            src={student.profileImage || "/assets/user-profile-icon.jpg"}
+            class="img-fluid mb-3"
+            alt="Student profile"
+        />
 
         <dl class="row">
             <dt class="col-sm-4">Email:</dt>
@@ -28,8 +33,17 @@
             <dt class="col-sm-4">School id number:</dt>
             <dd class="col-sm-8">{student.schoolIdNumber}</dd>
         </dl>
+        <div class="row">
+            <button
+                class="btn btn-primary w-50"
+                on:click={() => httpService.download(`api/students/${student.id}/report`, 'student-report.pdf')}>
+                    Download Report
+                </button>
+        </div>
     </div>
     <div class="col-md-8">
-        <Grades grades={student.grades} />
+        <div class="row">
+            <Grades grades={student.grades} />
+        </div>
     </div>
 </div>
