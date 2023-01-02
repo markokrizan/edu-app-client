@@ -3,20 +3,29 @@
     import ExamTable from "../components/exam/ExamTable.svelte";
     import PrivateLayout from "../layouts/PrivateLayout.svelte";
     import httpService from "../services/httpService";
+    import { userStore } from "../store";
 
-    const fetchExams = (page) => {
+    const user = userStore.getUser();
+
+    const fetchPassedExams = (page) => {
         return httpService
             .withAuth()
-            .request({ method: 'GET', url: `api/exams?page=${page}`});
+            .request({ method: 'GET', url: `api/students/${$user.id}/passed-exams?page=${page}`});
+    }
+
+    const fetchRegistrableExams = (page) => {
+        return httpService
+            .withAuth()
+            .request({ method: 'GET', url: `api/students/${$user.id}/registrable-exams?page=${page}`});
     }
 </script>
 
 <PrivateLayout>
-    <h2>Exams</h2>
+    <h2>Passed exams</h2>
 
     <Pager
-        fetchFn={fetchExams} 
-        queryKey="exams" 
+        fetchFn={fetchPassedExams} 
+        queryKey="passed-exams" 
         queryOptions={{ refetchOnMount: false }}
     >
         <svelte:fragment slot="pages" let:pages>
