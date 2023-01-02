@@ -10,6 +10,7 @@ import UserProfile from "../pages/UserProfile.svelte";
 import Course from "../pages/Course.svelte";
 import Teacher from "../pages/Teacher.svelte";
 import Student from "../pages/Student.svelte";
+import StudentCourses from "../pages/StudentCourses.svelte";
 
 const ROUTES = [
     {
@@ -28,9 +29,7 @@ const ROUTES = [
         accessibleViaSidebar: true,
         path: '/study-programs',
         components: {
-            [ROLE_ADMIN]: StudyPrograms,
-            [ROLE_TEACHER]: StudyPrograms,
-            [ROLE_STUDENT]: StudyPrograms
+            [ROLE_ADMIN]: StudyPrograms
         }
     },
     {
@@ -52,7 +51,7 @@ const ROUTES = [
         components: {
             [ROLE_ADMIN]: AdminCourses,
             [ROLE_TEACHER]: AdminCourses, 
-            [ROLE_STUDENT]: AdminCourses
+            [ROLE_STUDENT]: StudentCourses
         }
     },
     {
