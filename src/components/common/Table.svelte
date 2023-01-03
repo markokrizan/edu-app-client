@@ -12,20 +12,28 @@
         </tr>
     </thead>
     <tbody>
-        {#each tableData as dataRow}
+        {#if tableData.length > 0}
+            {#each tableData as dataRow}
+                <tr>
+                    {#each dataRow as cell, index}
+                            {#if $$slots.row}
+                                <slot
+                                    name="row"
+                                    cellValue={cell}
+                                    index={index}
+                                />
+                            {:else}
+                                <td>{cell}</td>
+                            {/if}
+                    {/each}
+                </tr>
+            {/each}   
+        {:else}
             <tr>
-                {#each dataRow as cell, index}
-                        {#if $$slots.row}
-                            <slot
-                                name="row"
-                                cellValue={cell}
-                                index={index}
-                            />
-                        {:else}
-                            <td>{cell}</td>
-                        {/if}
-                {/each}
+                <td colspan={columnNames.length} class="text-center">
+                    No data
+                </td>
             </tr>
-        {/each}   
+        {/if}
     </tbody>
 </table>
