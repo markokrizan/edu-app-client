@@ -21,7 +21,7 @@
 </script>
 
 <PrivateLayout>
-    <h2>Passed exams</h2>
+    <h4>Passed exams</h4>
 
     <Pager
         fetchFn={fetchPassedExams} 

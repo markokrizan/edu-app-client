@@ -5,7 +5,7 @@
     export let course;
 </script>
 
-<h2>{course.name}</h2>
+<h4>{course.name}</h4>
 
 <dl class="row">
     <dt class="col-sm-3">Year:</dt>

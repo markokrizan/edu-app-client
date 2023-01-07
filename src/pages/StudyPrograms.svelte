@@ -12,7 +12,7 @@
 </script>
 
 <PrivateLayout>
-    <h2>Study programs</h2>
+    <h4>Study programs</h4>
 
     <Pager
         fetchFn={fetchStudyPrograms} 

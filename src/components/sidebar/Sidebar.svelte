@@ -17,9 +17,9 @@
   $: role = $user?.roles.map(role => role.name)[0];
 </script>
 
-<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100">
   <Link to="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-    <i class="bi bi-book-half fs-2 me-2"></i>
+    <i class="bi bi-book-half fs-4 me-2"></i>
     <span class="fs-4">Edu app</span>
   </Link>
   <hr>

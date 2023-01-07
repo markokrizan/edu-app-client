@@ -14,7 +14,7 @@
 </script>
 
 <PrivateLayout>
-    <h2>Courses</h2>
+    <h4>Courses</h4>
     <Pager 
         fetchFn={fetchCourses} 
         queryKey="courses" 

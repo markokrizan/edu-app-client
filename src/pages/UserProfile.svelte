@@ -7,7 +7,7 @@
  
 <PrivateLayout>
     <div class="row">
-        <h2>{$user?.firstName} {$user?.lastName}</h2>
+        <h4>{$user?.firstName} {$user?.lastName}</h4>
     </div>
     
     <div class="row">

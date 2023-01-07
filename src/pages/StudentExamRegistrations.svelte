@@ -15,7 +15,7 @@
 </script>
 
 <PrivateLayout>
-    <h2>Registrable exams</h2>
+    <h4>Registrable exams</h4>
 
     <Pager
         fetchFn={fetchRegistrableExams} 

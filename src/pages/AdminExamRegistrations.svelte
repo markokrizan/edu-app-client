@@ -30,7 +30,7 @@
 </script>
 
 <PrivateLayout>
-    <h2>Exam Registrations</h2>
+    <h4>Exam Registrations</h4>
 
     <Pager
         fetchFn={fetchExamRegistrations} 
@@ -38,9 +38,7 @@
         queryOptions={{ refetchOnMount: false }}
     >
         <svelte:fragment slot="pages" let:pages>
-            <div class="row row-cols-lg-auto">
-                <Table columnNames={columnNames} tableData={reducePagesToTableRows(pages)} />
-            </div>
+            <Table columnNames={columnNames} tableData={reducePagesToTableRows(pages)} />
         </svelte:fragment>
     </Pager>
 </PrivateLayout>

@@ -6,7 +6,7 @@
 </script>
  
 <div class="row">
-    <h2>{teacher.firstName} {teacher.lastName}</h2>
+    <h4>{teacher.firstName} {teacher.lastName}</h4>
 </div>
 
 <div class="row">

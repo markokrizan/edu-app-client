@@ -6,7 +6,7 @@
 </script>
 
 <div class="row">
-    <h2>{student.firstName} {student.lastName}</h2>
+    <h4>{student.firstName} {student.lastName}</h4>
 </div>
 
 <div class="row">
@@ -35,7 +35,7 @@
         </dl>
         <div class="row">
             <button
-                class="btn btn-primary w-50"
+                class="btn btn-primary w-50 ms-2"
                 on:click={() => httpService.download(`api/students/${student.id}/report`, 'student-report.pdf')}>
                     Download Report
                 </button>
