@@ -10,12 +10,12 @@
     const fetchPassedExams = (page) => {
         return httpService
             .withAuth()
-            .request({ method: 'GET', url: `api/students/${$user.id}/passed-exams?page=${page}`});
+            .request({ method: 'GET', url: `api/teachers/${$user.id}/exams?page=${page}`});
     }
 </script>
 
 <PrivateLayout>
-    <h4>Passed exams</h4>
+    <h4>Your courses' exams</h4>
 
     <Pager
         fetchFn={fetchPassedExams} 

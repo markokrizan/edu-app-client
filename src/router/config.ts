@@ -1,6 +1,7 @@
 import { ROLE_ADMIN, ROLE_STUDENT, ROLE_TEACHER } from "../constants";
 import AdminExamRegistrations from "../pages/AdminExamRegistrations.svelte";
 import AdminExams from "../pages/AdminExams.svelte";
+import TeacherExams from '../pages/TeacherExams.svelte';
 import AdminCourses from "../pages/AdminCourses.svelte";
 import Students from "../pages/Students.svelte";
 import StudyPrograms from "../pages/StudyPrograms.svelte";
@@ -74,7 +75,7 @@ const ROUTES = [
         path: '/exams',
         components: {
             [ROLE_ADMIN]: AdminExams,
-            [ROLE_TEACHER]: AdminExams,
+            [ROLE_TEACHER]: TeacherExams,
             [ROLE_STUDENT]: StudentExams
         }
     },
