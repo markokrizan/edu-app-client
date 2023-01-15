@@ -21,7 +21,7 @@
 
     <Pager 
         fetchFn={fetchCourses} 
-        queryKey="courses" 
+        queryKey="student-courses" 
         queryOptions={{ refetchOnMount: false }}
     >
         <svelte:fragment slot="pages" let:pages>

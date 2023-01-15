@@ -4,20 +4,24 @@
 
     import Pager from "../components/common/Pager.svelte";
     import httpService from "../services/httpService";
+    import { userStore } from "../store";
+
+    const user = userStore.getUser();
 
     const fetchCourses = (page) => {
         return httpService
             .withAuth()
-            .request({ method: 'GET', url: `api/courses?page=${page}`});
+            .request({ method: 'GET', url: `api/teachers/${$user.id}/courses?page=${page}`});
     }
 
 </script>
 
 <PrivateLayout>
-    <h4>Courses</h4>
+    <h4>My Courses</h4>
+
     <Pager 
         fetchFn={fetchCourses} 
-        queryKey="admin-courses" 
+        queryKey="teacher-courses" 
         queryOptions={{ refetchOnMount: false }}
     >
         <svelte:fragment slot="pages" let:pages>

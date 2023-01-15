@@ -11,6 +11,7 @@ import Course from "../pages/Course.svelte";
 import Teacher from "../pages/Teacher.svelte";
 import Student from "../pages/Student.svelte";
 import StudentCourses from "../pages/StudentCourses.svelte";
+import TeacherCourses from "../pages/TeacherCourses.svelte";
 import StudentExams from "../pages/StudentExams.svelte";
 import StudentExamRegistrations from "../pages/StudentExamRegistrations.svelte";
 
@@ -52,7 +53,7 @@ const ROUTES = [
         path: '/courses',
         components: {
             [ROLE_ADMIN]: AdminCourses,
-            [ROLE_TEACHER]: AdminCourses, 
+            [ROLE_TEACHER]: TeacherCourses, 
             [ROLE_STUDENT]: StudentCourses
         }
     },
