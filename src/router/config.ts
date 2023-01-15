@@ -15,6 +15,7 @@ import StudentCourses from "../pages/StudentCourses.svelte";
 import TeacherCourses from "../pages/TeacherCourses.svelte";
 import StudentExams from "../pages/StudentExams.svelte";
 import StudentExamRegistrations from "../pages/StudentExamRegistrations.svelte";
+import TeacherExamRegistrations from "../pages/TeacherExamRegistrations.svelte";
 
 const ROUTES = [
     {
@@ -86,7 +87,7 @@ const ROUTES = [
         path: '/exam-registrations',
         components: {
             [ROLE_ADMIN]: AdminExamRegistrations,
-            [ROLE_TEACHER]: AdminExamRegistrations, 
+            [ROLE_TEACHER]: TeacherExamRegistrations, 
             [ROLE_STUDENT]: StudentExamRegistrations
         }
     },
