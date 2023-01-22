@@ -37,14 +37,7 @@
         <dd>
             <ul class="list-group w-50">
                 {#each (course.studyPrograms || []) as studyProgram}
-                    <HoverableInteraction>
-                        <Link 
-                            to="/study-programs/{studyProgram.id}" 
-                            class="text-decoration-none text-dark" 
-                        >
-                            <li class="list-group-item">{studyProgram.name}</li>
-                        </Link>
-                    </HoverableInteraction>
+                    <li class="list-group-item">{studyProgram.name}</li>
                 {/each}
             </ul>
         </dd>

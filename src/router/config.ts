@@ -106,7 +106,7 @@ const ROUTES = [
         accessibleViaSidebar: false,
         path: '/teachers/*id',
         components: {
-            [ROLE_ADMIN]: Teacher,
+            [ROLE_ADMIN]: Teacher
         }
     },
     {

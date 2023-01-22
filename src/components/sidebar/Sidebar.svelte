@@ -14,7 +14,7 @@
   const user = userStore.getUser();
 
   $: userFullName = `${$user?.firstName} ${$user?.lastName}`;
-  $: role = $user?.roles.map(role => role.name)[0];
+  $: role = $user?.roles?.map(role => role.name)[0];
 </script>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100">

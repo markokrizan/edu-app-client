@@ -2,6 +2,7 @@
     import { navigate, useLocation } from "svelte-navigator";
 
 	import { Route } from "svelte-navigator";
+    import AccessDenied from "../pages/AccessDenied.svelte";
     import Login from "../pages/Login.svelte";
     import NotFound from "../pages/NotFound.svelte";
     import { userStore } from "../store";
@@ -19,7 +20,7 @@
 </script>
 
 {#each ROUTES as route }
-    <Route path={route.path} component={role ? route.components[role] : null} />
+    <Route path={route.path} component={route.components[role] ?? AccessDenied} />
 {/each}
 
 <Route path="/login" component={Login} />
