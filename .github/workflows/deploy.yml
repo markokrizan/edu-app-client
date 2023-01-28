@@ -12,9 +12,9 @@ jobs:
         uses: actions/checkout@v1
       - name: Setup Node
         uses: actions/setup-node@v1
-      - name: Build assets
         with:
           node-version: '12.x'
+      - name: Build assets
         run: | 
           npm install
           npm run build
