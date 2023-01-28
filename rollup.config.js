@@ -34,6 +34,10 @@ function serve() {
 }
 
 const buildEnvVariables = () => {
+	if (!config().parsed) {
+		return {};
+	}
+
 	const configKeys = Object.keys(config().parsed);
 
 	let replacement = {};
