@@ -8,10 +8,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout codebase
+      - name: Checkout Codebase
         uses: actions/checkout@v1
-      - name: Build assets
+      - name: Setup Node
         uses: actions/setup-node@v1
+      - name: Build assets
         with:
           node-version: '12.x'
         run: | 
