@@ -1,3 +1,5 @@
+import variables from "../variables";
+
 export interface HttpServiceInterface {
     request({ method, url, body, headers } : { method: string, url: string, body?: any, headers?: Record<string, string> }): Promise<any>
     download(url: string, fileName: string): void
@@ -17,7 +19,7 @@ class FetchHttpService implements HttpServiceInterface {
             ...(this.isAuthenticatedRequest ? { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` } : {})
         }
 
-        const response = await fetch(`${process.env.API_BASE_URI}/${url}`, { method, headers: requestHeaders, body: body});
+        const response = await fetch(`${variables.apiBaseUri}/${url}`, { method, headers: requestHeaders, body: body});
 
         if (!response.ok) {
             if (response.headers.get('Content-Type') !== 'application/json') {
