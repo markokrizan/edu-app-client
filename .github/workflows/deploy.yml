@@ -18,11 +18,20 @@ jobs:
         run: | 
           npm install
           npm run build
+      - name: Share built data with deploy step
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: ./public/
   deploy:
     needs: build
     name: Deploy
     runs-on: ubuntu-latest
     steps:
+      - name: Get built data from build step
+        uses: actions/download-artifact@v2
+        with:
+          name: build
       - name: Push to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -32,8 +41,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_BUCKET: ${{ secrets.DEPLOY_BUCKET_NAME }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
-          SOURCE_DIR: 'public'
-          DEST_DIR: '/'
 
 
   
