@@ -18,10 +18,10 @@
 </script>
 
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100">
-  <Link to="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+  <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <i class="bi bi-book-half fs-4 me-2"></i>
     <span class="fs-4">Edu app</span>
-  </Link>
+  </div>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     {#each ROUTES as route}
