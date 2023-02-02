@@ -3,6 +3,7 @@ import AdminExamRegistrations from "../pages/AdminExamRegistrations.svelte";
 import AdminExams from "../pages/AdminExams.svelte";
 import TeacherExams from '../pages/TeacherExams.svelte';
 import AdminCourses from "../pages/AdminCourses.svelte";
+import AdminCreateCourse from "../pages/AdminCreateCourse.svelte";
 import Students from "../pages/Students.svelte";
 import StudyPrograms from "../pages/StudyPrograms.svelte";
 import Teachers from "../pages/Teachers.svelte";
@@ -58,6 +59,14 @@ const ROUTES = [
             [ROLE_ADMIN]: AdminCourses,
             [ROLE_TEACHER]: TeacherCourses, 
             [ROLE_STUDENT]: StudentCourses
+        }
+    },
+    {
+        name: 'Create Course',
+        accessibleViaSidebar: false,
+        path: '/courses/create',
+        components: {
+            [ROLE_ADMIN]: AdminCreateCourse,
         }
     },
     {

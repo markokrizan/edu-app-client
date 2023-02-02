@@ -4,6 +4,7 @@
 
     import Pager from "../components/common/Pager.svelte";
     import httpService from "../services/httpService";
+    import { Link } from "svelte-navigator";
 
     const fetchCourses = (page) => {
         return httpService
@@ -14,7 +15,11 @@
 </script>
 
 <PrivateLayout>
-    <h4>Courses</h4>
+    <div class="d-flex justify-content-between">
+        <h4>Courses</h4>
+        <Link to="/courses/create" class="btn btn-primary">Create</Link>
+    </div>
+    
     <Pager 
         fetchFn={fetchCourses} 
         queryKey="admin-courses" 

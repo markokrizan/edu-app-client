@@ -1,6 +1,6 @@
 
 <script lang="ts">
-    type TextInputVariant = "text" | "password" | "email";
+    type TextInputVariant = "text" | "number" | "password" | "email";
 
     export let name;
     export let label;
@@ -29,6 +29,16 @@
             id={name}
             name={name}
             type="email"
+            on:change={handleChange}
+            on:blur={handleChange}
+            bind:value={value}
+            class="form-control"
+        />
+    {:else if variant === 'number'}
+        <input
+            id={name}
+            name={name}
+            type="number"
             on:change={handleChange}
             on:blur={handleChange}
             bind:value={value}

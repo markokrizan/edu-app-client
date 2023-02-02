@@ -21,7 +21,7 @@
     >
         <svelte:fragment slot="pages" let:pages>
             <div class="row row-cols-lg-auto">
-                {#each pages as page}
+                {#each pages || [] as page}
                     {#each page.content as item}
                         <StudyProgramCard studyProgram={item} />
                     {/each}

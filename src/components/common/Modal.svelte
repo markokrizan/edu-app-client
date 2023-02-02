@@ -3,6 +3,8 @@
   export let showBackdrop = true;
   export let onClosed;
   export let title;
+  let clazz;
+  export { clazz as class };
 
   const modalClose = () => {
     open = false;
@@ -36,7 +38,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
+        <div class={`modal-body ${clazz}`}>
           <slot />
         </div>
         <div class="modal-footer">
