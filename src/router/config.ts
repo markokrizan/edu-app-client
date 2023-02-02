@@ -18,6 +18,8 @@ import StudentExams from "../pages/StudentExams.svelte";
 import StudentExamRegistrations from "../pages/StudentExamRegistrations.svelte";
 import TeacherExamRegistrations from "../pages/TeacherExamRegistrations.svelte";
 import StudentProfile from "../pages/StudentProfile.svelte";
+import TeacherProfile from "../pages/TeacherProfile.svelte";
+import TeacherCourse from "../pages/TeacherCourse.svelte";
 
 const ROUTES = [
     {
@@ -26,7 +28,7 @@ const ROUTES = [
         path: '/profile',
         components: {
             [ROLE_ADMIN]: UserProfile,
-            [ROLE_TEACHER]: UserProfile,
+            [ROLE_TEACHER]: TeacherProfile,
             [ROLE_STUDENT]: StudentProfile
         }
     },
@@ -75,7 +77,7 @@ const ROUTES = [
         path: 'courses/*id',
         components: {
             [ROLE_ADMIN]: Course,
-            [ROLE_TEACHER]: Course, 
+            [ROLE_TEACHER]: TeacherCourse, 
             [ROLE_STUDENT]: Course
         }
     },
