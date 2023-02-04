@@ -20,6 +20,7 @@ import TeacherExamRegistrations from "../pages/TeacherExamRegistrations.svelte";
 import StudentProfile from "../pages/StudentProfile.svelte";
 import TeacherProfile from "../pages/TeacherProfile.svelte";
 import TeacherCourse from "../pages/TeacherCourse.svelte";
+import StudentCourse from "../pages/StudentCourse.svelte";
 
 const ROUTES = [
     {
@@ -78,7 +79,7 @@ const ROUTES = [
         components: {
             [ROLE_ADMIN]: Course,
             [ROLE_TEACHER]: TeacherCourse, 
-            [ROLE_STUDENT]: Course
+            [ROLE_STUDENT]: StudentCourse
         }
     },
     {
