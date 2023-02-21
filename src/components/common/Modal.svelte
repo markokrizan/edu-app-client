@@ -1,9 +1,9 @@
 <script>
   export let open = false;
   export let showBackdrop = true;
-  export let onClosed;
+  export let onClosed = () => {};
   export let title;
-  let clazz;
+  let clazz = '';
   export { clazz as class };
 
   const modalClose = () => {
