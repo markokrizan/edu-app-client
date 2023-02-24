@@ -4,6 +4,7 @@
   import TextInput from "../common/forms/TextInput.svelte";
   import SelectInput from "../common/forms/SelectInput.svelte";
   import httpService from "../../services/httpService";
+  import StudyYearInput from "../common/forms/StudyYearInput.svelte";
 
   export let onComplete;
 
@@ -15,9 +16,11 @@
       semester: data.semester,
       year: data.year,
       espbPoints: data.espbPoints,
-      studyPrograms: [{
-        id: data.studyProgram,
-      }],
+      studyPrograms: [
+        {
+          id: data.studyProgram,
+        },
+      ],
     };
 
     try {
@@ -69,19 +72,13 @@
       SUMMER_WINTER: "Summer Winter",
     }}
   />
-  <SelectInput
+  <StudyYearInput
     name="year"
     label="Year:"
     {handleChange}
     value={form?.year}
     error={errors?.year}
     class="mt-2"
-    options={{
-      FIRST: "First",
-      SECCOND: "Second",
-      THIRD: "Third",
-      FOURTH: "Fourth",
-    }}
   />
   <TextInput
     name="espbPoints"

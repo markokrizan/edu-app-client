@@ -8,6 +8,8 @@
   export let multiple = false;
   let clazz;
   export { clazz as class };
+
+  let val = typeof value === 'number' ? Number(value).toString() : value;
 </script>
 
 <div class={clazz}>
@@ -16,11 +18,13 @@
     <select
       class="form-select"
       aria-label={label}
-      value={value || ''}
       on:change={handleChange}
+      on:blur={handleChange}
+      bind:value={val}
       {name}
       multiple
     >
+      <option>Please select an option</option>
       {#each options ? Object.entries(options) : [] as [optionValue, optionLabel]}
         <option value={optionValue}>{optionLabel}</option>
       {/each}
@@ -29,10 +33,12 @@
     <select
       class="form-select"
       aria-label={label}
-      value={value || ''}
       on:change={handleChange}
+      on:blur={handleChange}
+      bind:value={val}
       {name}
     >
+      <option>Please select an option</option>
       {#each options ? Object.entries(options) : [] as [optionValue, optionLabel]}
         <option value={optionValue}>{optionLabel}</option>
       {/each}

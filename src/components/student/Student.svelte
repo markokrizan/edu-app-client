@@ -6,7 +6,10 @@
 </script>
 
 <div class="row">
-    <h4>{student.firstName} {student.lastName}</h4>
+    <div class="d-flex justify-content-between">
+        <h4>{student.firstName} {student.lastName}</h4>
+        <slot name="action"/>
+    </div>
 </div>
 
 <div class="row">
