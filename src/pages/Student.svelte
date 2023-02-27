@@ -5,10 +5,24 @@
   import Student from "../components/student/Student.svelte";
   import StudentForm from "../components/forms/StudentForm.svelte";
   import Modal from "../components/common/Modal.svelte";
+  import { navigate } from "svelte-navigator";
+  import { useQueryClient } from "@sveltestack/svelte-query";
 
   export let id;
 
   let showUpsertStudentModal = false;
+
+  const queryClient = useQueryClient();
+
+  const deleteStudent = async () => {
+    await httpService
+        .withAuth()
+        .request({ method: "DELETE", url: `api/students/${id}` });
+
+    await queryClient.refetchQueries(["students"]);
+
+    navigate('/students');
+  }
 </script>
 
 <PrivateLayout>
@@ -22,10 +36,16 @@
     <svelte:fragment slot="data" let:data>
       <Student student={data}>
         <svelte:fragment slot="action">
-          <button
-            class="btn btn-primary"
-            on:click={() => (showUpsertStudentModal = true)}>Edit</button
-          >
+          <div>
+            <button
+              class="btn btn-primary"
+              on:click={() => (showUpsertStudentModal = true)}>Edit</button
+            >
+            <button
+              class="btn btn-danger"
+              on:click={() => deleteStudent()}>Delete</button
+            >
+          </div>
         </svelte:fragment>
       </Student>
 
