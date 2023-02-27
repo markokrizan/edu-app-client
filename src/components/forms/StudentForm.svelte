@@ -13,37 +13,31 @@
 
   export let onComplete = () => {};
 
-  let studentUpsertError = "";
-
   const queryClient = useQueryClient();
 
   const onSubmit = async (data) => {
-    try {
-      const studentData = {
-        ...student,
-        ...data,
-        role: ROLE_STUDENT,
-        studyProgram: {
-            id: data.studyProgram
-        }
-      };
+    const studentData = {
+      ...student,
+      ...data,
+      role: ROLE_STUDENT,
+      studyProgram: {
+        id: data.studyProgram,
+      },
+    };
 
-      const returnedStudent = await httpService.withAuth().request({
-        method: "POST",
-        url: "api/students",
-        body: JSON.stringify(studentData),
-      });
+    const returnedStudent = await httpService.withAuth().request({
+      method: "POST",
+      url: "api/students",
+      body: JSON.stringify(studentData),
+    });
 
-      if (student?.id) {
-        await queryClient.setQueryData('student', () => returnedStudent);
-      } else {
-        await queryClient.refetchQueries(["students"], { active: true });
-      }
-      
-      onComplete && onComplete(returnedStudent);
-    } catch (e) {
-      studentUpsertError = e.message || e.error;
+    if (student?.id) {
+      await queryClient.setQueryData("student", () => returnedStudent);
+    } else {
+      await queryClient.refetchQueries(["students"], { active: true });
     }
+
+    onComplete && onComplete(returnedStudent);
   };
 </script>
 
@@ -55,7 +49,10 @@
   validationSchema={yup.object().shape({
     firstName: yup.string().required("First Name is required"),
     lastName: yup.string().required("Last Name is required"),
-    email: yup.string().required('Email is required').email("Email is required"),
+    email: yup
+      .string()
+      .required("Email is required")
+      .email("Email is required"),
     username: yup.string().required("Username is required"),
     personalIdNumber: yup.string().required("Personal id number is required"),
     phoneNumber: yup.string().required("Phone Number is required"),
@@ -72,10 +69,11 @@
     phoneNumber: student.phoneNumber,
     currentStudyYear: student.currentStudyYear,
     financialStatus: student.financialStatus,
-    studyProgram: student.studyProgram?.id
+    studyProgram: student.studyProgram?.id,
   }}
+  let:submitError
 >
-  <p class="text-danger">{studentUpsertError}</p>
+  <p class="text-danger">{submitError}</p>
   <TextInput
     name="firstName"
     label="First Name:"

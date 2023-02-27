@@ -8,13 +8,35 @@
     let clazz;
 	export { clazz as class };
 
+    let apiFormErrors = {};
+    let submitError = '';
+
+    const submit = async (data) => {
+        apiFormErrors = {}
+        submitError = ''
+    
+        try {
+            await onSubmit(data);
+        } catch (e) {
+            if (e.errors) {
+                for (let error of e.errors) {
+                    apiFormErrors[error.field] = error.defaultMessage
+                }
+            } else {
+                submitError = e.error || e.message;
+            }
+        }
+    }
+
     let { form, errors, state, handleChange, handleSubmit } = createForm({
         initialValues,
         validationSchema,
-        onSubmit
+        onSubmit: submit
     });
+
+    $: combinedErrors = {...apiFormErrors, ...$errors, ...apiFormErrors}
 </script>
 
 <form on:submit={handleSubmit} class={clazz}>
-    <slot form={$form} errors={$errors} {handleChange} state={$state}></slot>
+    <slot form={$form} errors={combinedErrors} {handleChange} state={$state} submitError={submitError}></slot>
 </form>
