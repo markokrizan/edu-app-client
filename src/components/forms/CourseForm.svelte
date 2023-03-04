@@ -5,13 +5,21 @@
   import SelectInput from "../common/forms/SelectInput.svelte";
   import httpService from "../../services/httpService";
   import StudyYearInput from "../common/forms/StudyYearInput.svelte";
+  import StudyProgramInput from "../common/forms/StudyProgramInput.svelte";
+  import { useQueryClient } from "@sveltestack/svelte-query";
 
+  export let course = {};
   export let onComplete;
+  let clazz = '';
+  export { clazz as class };
 
-  let createCourseError = "";
+  const queryClient = useQueryClient();
+
+  let upsertedCourseError = "";
 
   const onSubmit = async (data) => {
     const courseData = {
+      ...course,
       name: data.name,
       semester: data.semester,
       year: data.year,
@@ -21,18 +29,25 @@
           id: data.studyProgram,
         },
       ],
+      engagements: course.engagements.map(engagement => ({ id: engagement.id }))
     };
 
     try {
-      const createdCourse = await httpService.withAuth().request({
+      const upsertedCourse = await httpService.withAuth().request({
         method: "POST",
         url: "api/courses",
         body: JSON.stringify(courseData),
       });
 
-      onComplete && onComplete(createdCourse);
+      if (course?.id) {
+        await queryClient.setQueryData("course", () => upsertedCourse);
+      } else {
+        await queryClient.refetchQueries(["admin-courses"], { active: true });
+      }
+
+      onComplete && onComplete(upsertedCourse);
     } catch (e) {
-      createCourseError = e.message;
+      upsertedCourseError = e.message;
     }
   };
 </script>
@@ -47,11 +62,12 @@
     semester: yup.string().required("Semester is required"),
     year: yup.string().required("Year is required"),
     espbPoints: yup.string().required("ESPB Points is required"),
+    studyProgram: yup.string().required("Study Program is required"),
   })}
-  class="w-50"
+  class={clazz}
+  initialValues={{...course, studyProgram: course?.studyPrograms[0]?.id ?? ''}}
 >
-  <h3>Create a new course</h3>
-  <p class="text-danger">{createCourseError}</p>
+  <p class="text-danger">{upsertedCourseError}</p>
   <TextInput
     name="name"
     label="Name:"
@@ -87,6 +103,15 @@
     value={form?.espbPoints}
     error={errors?.espbPoints}
     variant="number"
+    class="mt-2"
   />
-  <button class="btn btn-primary mt-2" type="submit">Create</button>
+  <StudyProgramInput
+    name="studyProgram"
+    label="Study Program"
+    {handleChange}
+    value={form?.studyProgram}
+    error={errors?.studyProgram}
+    class="mt-2"
+  />
+  <button class="btn btn-primary mt-2" type="submit">Save</button>
 </Form>

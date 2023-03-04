@@ -5,5 +5,6 @@
 </script>
 
 <PrivateLayout>
-  <CourseForm onComplete={() => navigate("/courses")} />
+  <h3>Create a new course</h3>
+  <CourseForm onComplete={() => navigate("/courses")} class="w-50" />
 </PrivateLayout>

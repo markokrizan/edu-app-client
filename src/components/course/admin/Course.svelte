@@ -2,14 +2,21 @@
   import { Link } from "svelte-navigator";
   import HoverableInteraction from "../../common/HoverableInteraction.svelte";
   import Modal from "../../common/Modal.svelte";
+  import CourseForm from "../../forms/CourseForm.svelte";
   import EngagementForm from "../../forms/EngagementForm.svelte";
 
   export let course;
 
   let showEngagementForm = false;
+  let showCourseForm = false;
 </script>
 
-<h4>{course.name}</h4>
+<div class="d-flex justify-content-between">
+  <h4>{course.name}</h4>
+  <button class="btn btn-primary" on:click={() => showCourseForm = true}>
+    Edit
+  </button>
+</div>
 
 <dl class="row">
   <dt class="col-sm-3">Year:</dt>
@@ -66,4 +73,12 @@
   class="d-flex justify-content-center"
 >
   <EngagementForm {course} onComplete={() => (showEngagementForm = false)} />
+</Modal>
+
+<Modal
+  open={showCourseForm}
+  title="Update Course"
+  class="d-flex justify-content-center"
+>
+  <CourseForm {course} onComplete={() => (showCourseForm = false)} class="w-100"/>
 </Modal>
