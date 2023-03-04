@@ -9,7 +9,7 @@ import StudyPrograms from "../pages/admin/StudyPrograms.svelte";
 import AdminTeachers from "../pages/admin/Teachers.svelte";
 import Terms from "../pages/shared/Terms.svelte";
 import AdminProfile from "../pages/admin/Profile.svelte";
-import Course from "../pages/admin/Course.svelte";
+import AdminCourse from "../pages/admin/Course.svelte";
 import AdminTeacher from "../pages/admin/Teacher.svelte";
 import AdminStudent from "../pages/admin/Student.svelte";
 import StudentCourses from "../pages/student/Courses.svelte";
@@ -77,7 +77,7 @@ const ROUTES = [
         accessibleViaSidebar: false,
         path: 'courses/*id',
         components: {
-            [ROLE_ADMIN]: Course,
+            [ROLE_ADMIN]: AdminCourse,
             [ROLE_TEACHER]: TeacherCourse, 
             [ROLE_STUDENT]: StudentCourse
         }

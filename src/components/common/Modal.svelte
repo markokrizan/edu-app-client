@@ -1,18 +1,10 @@
 <script>
   export let open = false;
   export let showBackdrop = true;
-  export let onClosed = () => {};
+  export let onClose = () => {};
   export let title;
   let clazz = '';
   export { clazz as class };
-
-  const modalClose = () => {
-    open = false;
-
-    if (onClosed) {
-      onClosed();
-    }
-  };
 </script>
 
 {#if open}
@@ -33,7 +25,7 @@
             class="btn"
             data-dismiss="modal"
             aria-label="Close"
-            on:click={modalClose}
+            on:click={onClose}
           >
             <span aria-hidden="true">&times;</span>
           </button>
@@ -46,7 +38,7 @@
             type="button"
             class="btn btn-secondary"
             data-dismiss="modal"
-            on:click={modalClose}>Close</button
+            on:click={onClose}>Close</button
           >
         </div>
       </div>

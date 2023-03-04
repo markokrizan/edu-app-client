@@ -49,7 +49,7 @@
         </svelte:fragment>
       </Student>
 
-      <Modal open={showUpsertStudentModal} title="Upsert student">
+      <Modal open={showUpsertStudentModal} onClose={() => showUpsertStudentModal = false} title="Upsert student">
         <StudentForm
           student={data}
           onComplete={() => (showUpsertStudentModal = false)}

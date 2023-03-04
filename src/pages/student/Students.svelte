@@ -40,7 +40,7 @@
     </svelte:fragment>
   </Pager>
 
-  <Modal open={showUpsertStudentModal} title="Upsert student">
+  <Modal open={showUpsertStudentModal} onClose={() => showUpsertStudentModal = false} title="Upsert student">
     <StudentForm onComplete={() => (showUpsertStudentModal = false)} />
   </Modal>
 </PrivateLayout>

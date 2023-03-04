@@ -69,6 +69,7 @@
 
 <Modal
   open={showEngagementForm}
+  onClose={() => showEngagementForm = false}
   title="Add Engagement"
   class="d-flex justify-content-center"
 >
@@ -79,6 +80,7 @@
   open={showCourseForm}
   title="Update Course"
   class="d-flex justify-content-center"
+  onClose={() => showCourseForm = false}
 >
   <CourseForm {course} onComplete={() => (showCourseForm = false)} class="w-100"/>
 </Modal>

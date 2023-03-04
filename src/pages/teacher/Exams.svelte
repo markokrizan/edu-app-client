@@ -48,7 +48,7 @@
     </svelte:fragment>
   </Pager>
 
-  <Modal title="Create a new exam" open={showExamModal}>
+  <Modal title="Create a new exam" open={showExamModal} onClose={() => showExamModal = false}>
     <ExamForm {onComplete} />
   </Modal>
 </PrivateLayout>

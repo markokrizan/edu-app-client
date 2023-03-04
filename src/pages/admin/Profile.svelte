@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <Modal open={showEditUserModal} title="Edit profile info">
+  <Modal open={showEditUserModal} onClose={() => showEditUserModal = false} title="Edit profile info">
     <EditProfileForm onComplete={() => showEditUserModal = false} />
   </Modal>
 </PrivateLayout>

@@ -108,7 +108,7 @@
     </svelte:fragment>
   </Pager>
 
-  <Modal open={!!currentRegistration} title="Set Grade">
+  <Modal open={!!currentRegistration} onClose={() => currentRegistration = false} title="Set Grade">
     <Form
       let:handleChange
       let:errors
