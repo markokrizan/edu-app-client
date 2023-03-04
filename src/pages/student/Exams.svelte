@@ -1,10 +1,10 @@
 <script>
   import { Link } from "svelte-navigator";
-  import Pager from "../components/common/Pager.svelte";
-  import Table from "../components/common/Table.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import httpService from "../services/httpService";
-  import { userStore } from "../store";
+  import Pager from "../../components/common/Pager.svelte";
+  import Table from "../../components/common/Table.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import httpService from "../../services/httpService";
+  import { userStore } from "../../store";
 
   const user = userStore.getUser();
 

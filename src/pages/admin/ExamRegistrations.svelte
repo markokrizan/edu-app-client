@@ -1,8 +1,8 @@
 <script>
-    import Pager from "../components/common/Pager.svelte";
-    import Table from "../components/common/Table.svelte";
-    import PrivateLayout from "../layouts/PrivateLayout.svelte";
-    import httpService from "../services/httpService";
+    import Pager from "../../components/common/Pager.svelte";
+    import Table from "../../components/common/Table.svelte";
+    import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+    import httpService from "../../services/httpService";
 
     const fetchExamRegistrations = (page) => {
         return httpService

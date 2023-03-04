@@ -1,8 +1,8 @@
 <script lang="ts">
-    import Course from "../components/course/Course.svelte";
-    import PrivateLayout from "../layouts/PrivateLayout.svelte";``
-    import httpService from "../services/httpService";
-    import Loadable from "../components/common/Loadable.svelte";
+    import Course from "../../components/course/admin/Course.svelte";
+    import PrivateLayout from "../../layouts/PrivateLayout.svelte";``
+    import httpService from "../../services/httpService";
+    import Loadable from "../../components/common/Loadable.svelte";
 
     export let id;
 </script>

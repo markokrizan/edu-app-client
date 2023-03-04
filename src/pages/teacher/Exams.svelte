@@ -1,12 +1,12 @@
 <script>
   import { useQueryClient } from "@sveltestack/svelte-query";
-  import Modal from "../components/common/Modal.svelte";
-  import Pager from "../components/common/Pager.svelte";
-  import ExamTable from "../components/exam/ExamTable.svelte";
-  import ExamForm from "../components/forms/ExamForm.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import httpService from "../services/httpService";
-  import { userStore } from "../store";
+  import Modal from "../../components/common/Modal.svelte";
+  import Pager from "../../components/common/Pager.svelte";
+  import ExamTable from "../../components/exam/ExamTable.svelte";
+  import ExamForm from "../../components/forms/ExamForm.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import httpService from "../../services/httpService";
+  import { userStore } from "../../store";
 
   const user = userStore.getUser();
 

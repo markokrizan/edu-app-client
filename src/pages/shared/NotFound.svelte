@@ -1,5 +1,5 @@
 <script lang="ts">
-    import PublicLayout from "../layouts/PublicLayout.svelte";
+    import PublicLayout from "../../layouts/PublicLayout.svelte";
 </script>
 
 <PublicLayout>

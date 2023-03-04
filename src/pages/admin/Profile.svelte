@@ -1,8 +1,8 @@
 <script lang="ts">
-  import Modal from "../components/common/Modal.svelte";
-  import EditProfileForm from "../components/forms/EditProfileForm.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import { userStore } from "../store";
+  import Modal from "../../components/common/Modal.svelte";
+  import EditProfileForm from "../../components/forms/EditProfileForm.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import { userStore } from "../../store";
 
   const user = userStore.getUser();
 

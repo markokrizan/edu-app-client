@@ -1,6 +1,6 @@
 <script lang="ts">
     import { Link } from "svelte-navigator";
-    import HoverableInteraction from "../common/HoverableInteraction.svelte";
+    import HoverableInteraction from "../../common/HoverableInteraction.svelte";
 
 	export let course;
 </script>

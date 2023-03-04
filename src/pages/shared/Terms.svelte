@@ -1,8 +1,8 @@
 <script>
-    import Pager from "../components/common/Pager.svelte";
-    import TermCard from "../components/term/TermCard.svelte";
-    import PrivateLayout from "../layouts/PrivateLayout.svelte";
-    import httpService from "../services/httpService";
+    import Pager from "../../components/common/Pager.svelte";
+    import TermCard from "../../components/term/TermCard.svelte";
+    import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+    import httpService from "../../services/httpService";
 
     const fetchTerms = (page) => {
         return httpService

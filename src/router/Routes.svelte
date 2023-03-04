@@ -2,9 +2,9 @@
     import { navigate, useLocation } from "svelte-navigator";
 
 	import { Route } from "svelte-navigator";
-    import AccessDenied from "../pages/AccessDenied.svelte";
-    import Login from "../pages/Login.svelte";
-    import NotFound from "../pages/NotFound.svelte";
+    import AccessDenied from "../pages/shared/AccessDenied.svelte";
+    import Login from "../pages/shared/Login.svelte";
+    import NotFound from "../pages/shared/NotFound.svelte";
     import { userStore } from "../store";
     import ROUTES from "./config";
 

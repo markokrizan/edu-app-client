@@ -1,26 +1,26 @@
 import { ROLE_ADMIN, ROLE_STUDENT, ROLE_TEACHER } from "../constants";
-import AdminExamRegistrations from "../pages/AdminExamRegistrations.svelte";
-import AdminExams from "../pages/AdminExams.svelte";
-import TeacherExams from '../pages/TeacherExams.svelte';
-import AdminCourses from "../pages/AdminCourses.svelte";
-import AdminCreateCourse from "../pages/AdminCreateCourse.svelte";
-import Students from "../pages/Students.svelte";
-import StudyPrograms from "../pages/StudyPrograms.svelte";
-import Teachers from "../pages/Teachers.svelte";
-import Terms from "../pages/Terms.svelte";
-import UserProfile from "../pages/UserProfile.svelte";
-import Course from "../pages/Course.svelte";
-import Teacher from "../pages/Teacher.svelte";
-import Student from "../pages/Student.svelte";
-import StudentCourses from "../pages/StudentCourses.svelte";
-import TeacherCourses from "../pages/TeacherCourses.svelte";
-import StudentExams from "../pages/StudentExams.svelte";
-import StudentExamRegistrations from "../pages/StudentExamRegistrations.svelte";
-import TeacherExamRegistrations from "../pages/TeacherExamRegistrations.svelte";
-import StudentProfile from "../pages/StudentProfile.svelte";
-import TeacherProfile from "../pages/TeacherProfile.svelte";
-import TeacherCourse from "../pages/TeacherCourse.svelte";
-import StudentCourse from "../pages/StudentCourse.svelte";
+import AdminExamRegistrations from "../pages/admin/ExamRegistrations.svelte";
+import AdminExams from "../pages/admin/Exams.svelte";
+import TeacherExams from '../pages/teacher/Exams.svelte';
+import AdminCourses from "../pages/admin/Courses.svelte";
+import AdminCreateCourse from "../pages/admin/CreateCourse.svelte";
+import Students from "../pages/student/Students.svelte";
+import StudyPrograms from "../pages/admin/StudyPrograms.svelte";
+import AdminTeachers from "../pages/admin/Teachers.svelte";
+import Terms from "../pages/shared/Terms.svelte";
+import AdminProfile from "../pages/admin/Profile.svelte";
+import Course from "../pages/admin/Course.svelte";
+import AdminTeacher from "../pages/admin/Teacher.svelte";
+import AdminStudent from "../pages/admin/Student.svelte";
+import StudentCourses from "../pages/student/Courses.svelte";
+import TeacherCourses from "../pages/teacher/Courses.svelte";
+import StudentExams from "../pages/student/Exams.svelte";
+import StudentExamRegistrations from "../pages/student/ExamRegistrations.svelte";
+import TeacherExamRegistrations from "../pages/teacher/ExamRegistrations.svelte";
+import StudentProfile from "../pages/student/Profile.svelte";
+import TeacherProfile from "../pages/teacher/Profile.svelte";
+import TeacherCourse from "../pages/teacher/Course.svelte";
+import StudentCourse from "../pages/student/Course.svelte";
 
 const ROUTES = [
     {
@@ -28,7 +28,7 @@ const ROUTES = [
         accessibleViaSidebar: false,
         path: '/profile',
         components: {
-            [ROLE_ADMIN]: UserProfile,
+            [ROLE_ADMIN]: AdminProfile,
             [ROLE_TEACHER]: TeacherProfile,
             [ROLE_STUDENT]: StudentProfile
         }
@@ -110,7 +110,7 @@ const ROUTES = [
         accessibleViaSidebar: true,
         path: '/teachers',
         components: {
-            [ROLE_ADMIN]: Teachers,
+            [ROLE_ADMIN]: AdminTeachers,
         }
     },
     {
@@ -118,7 +118,7 @@ const ROUTES = [
         accessibleViaSidebar: false,
         path: '/teachers/*id',
         components: {
-            [ROLE_ADMIN]: Teacher
+            [ROLE_ADMIN]: AdminTeacher
         }
     },
     {
@@ -136,7 +136,7 @@ const ROUTES = [
         accessibleViaSidebar: false,
         path: '/students/*id',
         components: {
-            [ROLE_ADMIN]: Student,
+            [ROLE_ADMIN]: AdminStudent,
         }
     }
 ]

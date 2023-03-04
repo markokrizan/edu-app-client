@@ -1,5 +1,5 @@
 <script>
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
 </script>
 
 <PrivateLayout>

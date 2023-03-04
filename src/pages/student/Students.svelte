@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Modal from "../components/common/Modal.svelte";
-  import Pager from "../components/common/Pager.svelte";
-  import StudentForm from "../components/forms/StudentForm.svelte";
-  import StudentCard from "../components/student/StudentCard.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import httpService from "../services/httpService";
+  import Modal from "../../components/common/Modal.svelte";
+  import Pager from "../../components/common/Pager.svelte";
+  import StudentForm from "../../components/forms/StudentForm.svelte";
+  import StudentCard from "../../components/student/StudentCard.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import httpService from "../../services/httpService";
 
   const fetchStudents = (page) => {
     return httpService

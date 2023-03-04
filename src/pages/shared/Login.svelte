@@ -1,8 +1,8 @@
 <script lang="ts">
     import { navigate } from "svelte-navigator";
-    import LoginForm from "../components/forms/LoginForm.svelte";
-    import PublicLayout from "../layouts/PublicLayout.svelte";
-    import authService from "../services/authService";
+    import LoginForm from "../../components/forms/LoginForm.svelte";
+    import PublicLayout from "../../layouts/PublicLayout.svelte";
+    import authService from "../../services/authService";
 
 	if (authService.isLoggedIn()) {
 		navigate('/profile')

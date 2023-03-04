@@ -1,28 +1,27 @@
 <script lang="ts">
-    import CourseCard from "../components/course/CourseCard.svelte";
-    import PrivateLayout from "../layouts/PrivateLayout.svelte";
+    import CourseCard from "../../components/course/shared/CourseCard.svelte";
+    import PrivateLayout from "../../layouts/PrivateLayout.svelte";
 
-    import Pager from "../components/common/Pager.svelte";
-    import httpService from "../services/httpService";
-    import { Link } from "svelte-navigator";
+    import Pager from "../../components/common/Pager.svelte";
+    import httpService from "../../services/httpService";
+    import { userStore } from "../../store";
+
+    const user = userStore.getUser();
 
     const fetchCourses = (page) => {
         return httpService
             .withAuth()
-            .request({ method: 'GET', url: `api/courses?page=${page}`});
+            .request({ method: 'GET', url: `api/students/${$user.id}/courses?page=${page}`});
     }
 
 </script>
 
 <PrivateLayout>
-    <div class="d-flex justify-content-between">
-        <h4>Courses</h4>
-        <Link to="/courses/create" class="btn btn-primary">Create</Link>
-    </div>
-    
+    <h4>My Courses</h4>
+
     <Pager 
         fetchFn={fetchCourses} 
-        queryKey="admin-courses" 
+        queryKey="student-courses" 
         queryOptions={{ refetchOnMount: false }}
     >
         <svelte:fragment slot="pages" let:pages>

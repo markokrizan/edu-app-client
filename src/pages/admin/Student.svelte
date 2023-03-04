@@ -1,10 +1,10 @@
 <script>
-  import Loadable from "../components/common/Loadable.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import httpService from "../services/httpService";
-  import Student from "../components/student/Student.svelte";
-  import StudentForm from "../components/forms/StudentForm.svelte";
-  import Modal from "../components/common/Modal.svelte";
+  import Loadable from "../../components/common/Loadable.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import httpService from "../../services/httpService";
+  import Student from "../../components/student/Student.svelte";
+  import StudentForm from "../../components/forms/StudentForm.svelte";
+  import Modal from "../../components/common/Modal.svelte";
   import { navigate } from "svelte-navigator";
   import { useQueryClient } from "@sveltestack/svelte-query";
 

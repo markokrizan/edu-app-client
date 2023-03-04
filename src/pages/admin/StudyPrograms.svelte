@@ -1,8 +1,8 @@
 <script>
-    import Pager from "../components/common/Pager.svelte";
-    import StudyProgramCard from "../components/study-program/StudyProgramCard.svelte";
-    import PrivateLayout from "../layouts/PrivateLayout.svelte";
-    import httpService from "../services/httpService";
+    import Pager from "../../components/common/Pager.svelte";
+    import StudyProgramCard from "../../components/study-program/StudyProgramCard.svelte";
+    import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+    import httpService from "../../services/httpService";
 
     const fetchStudyPrograms = (page) => {
         return httpService

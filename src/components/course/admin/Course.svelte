@@ -1,8 +1,8 @@
 <script>
   import { Link } from "svelte-navigator";
-  import HoverableInteraction from "../../components/common/HoverableInteraction.svelte";
-  import Modal from "../common/Modal.svelte";
-  import EngagementForm from "../forms/EngagementForm.svelte";
+  import HoverableInteraction from "../../common/HoverableInteraction.svelte";
+  import Modal from "../../common/Modal.svelte";
+  import EngagementForm from "../../forms/EngagementForm.svelte";
 
   export let course;
 

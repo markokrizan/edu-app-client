@@ -1,12 +1,12 @@
 <script>
-  import Form from "../components/common/forms/Form.svelte";
-  import SelectInput from "../components/common/forms/SelectInput.svelte";
-  import Modal from "../components/common/Modal.svelte";
-  import Pager from "../components/common/Pager.svelte";
-  import Table from "../components/common/Table.svelte";
-  import PrivateLayout from "../layouts/PrivateLayout.svelte";
-  import httpService from "../services/httpService";
-  import { userStore } from "../store";
+  import Form from "../../components/common/forms/Form.svelte";
+  import SelectInput from "../../components/common/forms/SelectInput.svelte";
+  import Modal from "../../components/common/Modal.svelte";
+  import Pager from "../../components/common/Pager.svelte";
+  import Table from "../../components/common/Table.svelte";
+  import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import httpService from "../../services/httpService";
+  import { userStore } from "../../store";
 
   const user = userStore.getUser();
 
