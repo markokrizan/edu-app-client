@@ -3,17 +3,15 @@
   import HoverableInteraction from "../../common/HoverableInteraction.svelte";
   import Modal from "../../common/Modal.svelte";
   import CourseForm from "../../forms/CourseForm.svelte";
-  import EngagementForm from "../../forms/EngagementForm.svelte";
 
   export let course;
 
-  let showEngagementForm = false;
   let showCourseForm = false;
 </script>
 
 <div class="d-flex justify-content-between">
   <h4>{course.name}</h4>
-  <button class="btn btn-primary" on:click={() => showCourseForm = true}>
+  <button class="btn btn-primary" on:click={() => (showCourseForm = true)}>
     Edit
   </button>
 </div>
@@ -25,12 +23,7 @@
   <dt class="col-sm-3">Espb points:</dt>
   <dd class="col-sm-9">{course.espbPoints}</dd>
 
-  <dt class="mb-2">
-    Engagements: <button
-      class="btn btn-primary"
-      on:click={() => (showEngagementForm = !showEngagementForm)}>Add</button
-    >
-  </dt>
+  <dt class="mb-2">Engagements:</dt>
   <dd>
     {#if course.engagements?.length}
       <ul class="list-group w-50">
@@ -68,19 +61,14 @@
 </dl>
 
 <Modal
-  open={showEngagementForm}
-  onClose={() => showEngagementForm = false}
-  title="Add Engagement"
-  class="d-flex justify-content-center"
->
-  <EngagementForm {course} onComplete={() => (showEngagementForm = false)} />
-</Modal>
-
-<Modal
   open={showCourseForm}
   title="Update Course"
   class="d-flex justify-content-center"
-  onClose={() => showCourseForm = false}
+  onClose={() => (showCourseForm = false)}
 >
-  <CourseForm {course} onComplete={() => (showCourseForm = false)} class="w-100"/>
+  <CourseForm
+    {course}
+    onComplete={() => (showCourseForm = false)}
+    class="w-100"
+  />
 </Modal>

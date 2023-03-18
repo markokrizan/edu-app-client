@@ -7,10 +7,11 @@
   import StudyYearInput from "../common/forms/StudyYearInput.svelte";
   import StudyProgramInput from "../common/forms/StudyProgramInput.svelte";
   import { useQueryClient } from "@sveltestack/svelte-query";
+  import EngagementInput from "../common/forms/EngagementInput.svelte";
 
   export let course = {};
   export let onComplete;
-  let clazz = '';
+  let clazz = "";
   export { clazz as class };
 
   const queryClient = useQueryClient();
@@ -18,21 +19,30 @@
   let upsertedCourseError = "";
 
   const onSubmit = async (data) => {
-    const courseData = {
-      ...course,
-      name: data.name,
-      semester: data.semester,
-      year: data.year,
-      espbPoints: data.espbPoints,
-      studyPrograms: [
-        {
-          id: data.studyProgram,
-        },
-      ],
-      engagements: course.engagements.map(engagement => ({ id: engagement.id }))
-    };
-
     try {
+      const courseData = {
+        ...course,
+        name: data.name,
+        semester: data.semester,
+        year: data.year,
+        espbPoints: data.espbPoints,
+        studyPrograms: [
+          {
+            id: data.studyProgram
+          }
+        ],
+        engagements: data.engagements.map((engagement) => ({
+          id: engagement.id,
+          course: {
+            id: course.id,
+          },
+          engagementType: engagement.engagementType,
+          teacher: {
+            id: engagement.teacher,
+          },
+        })),
+      };
+
       const upsertedCourse = await httpService.withAuth().request({
         method: "POST",
         url: "api/courses",
@@ -63,9 +73,24 @@
     year: yup.string().required("Year is required"),
     espbPoints: yup.string().required("ESPB Points is required"),
     studyProgram: yup.string().required("Study Program is required"),
+    engagements: yup.array().of(
+      yup.object().shape({
+        engagementType: yup.string().required("Engagement type is required"),
+        teacher: yup.string().required("Teacher is required"),
+      })
+    ),
   })}
   class={clazz}
-  initialValues={{...course, studyProgram: course?.studyPrograms[0]?.id ?? ''}}
+  initialValues={{
+    ...course,
+    // TODO: Change when multi select implemented
+    studyProgram: course?.studyPrograms[0]?.id ?? null,
+    engagements: course.engagements.map((engagement) => ({
+      id: engagement.id,
+      engagementType: engagement.engagementType,
+      teacher: engagement.teacher.id,
+    })),
+  }}
 >
   <p class="text-danger">{upsertedCourseError}</p>
   <TextInput
@@ -111,6 +136,13 @@
     {handleChange}
     value={form?.studyProgram}
     error={errors?.studyProgram}
+    class="mt-2"
+  />
+  <EngagementInput
+    name="engagements"
+    {form}
+    {handleChange}
+    {errors}
     class="mt-2"
   />
   <button class="btn btn-primary mt-2" type="submit">Save</button>
