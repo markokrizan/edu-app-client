@@ -51,7 +51,7 @@
       <Modal
         open={showUpsertTeacherModal}
         onClose={() => (showUpsertTeacherModal = false)}
-        title="Upsert student"
+        title="Upsert teacher"
       >
         <TeacherForm
           teacher={data}
