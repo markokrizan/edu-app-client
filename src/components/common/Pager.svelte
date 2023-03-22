@@ -29,7 +29,7 @@
 {#if $queryResult?.status === 'loading'}
     Loading...
 {:else if $queryResult?.status === 'error'}
-    Error: {$queryResult?.error?.error}
+    Error: {$queryResult?.error?.message || $queryResult?.error?.error}
 {:else}
     <slot
         name="pages"
