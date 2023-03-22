@@ -1,6 +1,7 @@
 
 <script lang="ts">
     import { createForm } from "svelte-forms-lib";
+    import stringService from '../../../services/stringService';
 
     export let initialValues;
     export let onSubmit;
@@ -20,10 +21,16 @@
         } catch (e) {
             if (e.errors) {
                 for (let error of e.errors) {
-                    apiFormErrors[error.field] = error.defaultMessage
+                    const fieldName = error.field || stringService.toCamelCase(error.code);
+
+                    if (!fieldName) {
+                        continue;
+                    }
+
+                    apiFormErrors[fieldName] = error.defaultMessage
                 }
             } else {
-                submitError = e.error || e.message;
+                submitError = e.message || e.error;
             }
         }
     }

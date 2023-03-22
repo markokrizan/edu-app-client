@@ -9,8 +9,6 @@
 
   export let onComplete;
 
-  let createExamError = "";
-
   const onSubmit = async (data) => {
     const examData = {
       course: {
@@ -23,17 +21,13 @@
       examDate: data.examDate,
     };
 
-    try {
-      const createdEngagement = await httpService.withAuth().request({
-        method: "POST",
-        url: "api/exams",
-        body: JSON.stringify(examData),
-      });
+    const createdEngagement = await httpService.withAuth().request({
+      method: "POST",
+      url: "api/exams",
+      body: JSON.stringify(examData),
+    });
 
-      onComplete && onComplete(createdEngagement);
-    } catch (e) {
-        createExamError = e.message || e.error;
-    }
+    onComplete && onComplete(createdEngagement);
   };
 </script>
 
@@ -41,15 +35,16 @@
   let:handleChange
   let:errors
   let:form
+  let:submitError
   {onSubmit}
   validationSchema={yup.object().shape({
-    examDate: yup.date().required("Exam date is required"),
+    examDate: yup.string().required("Exam date is required"),
     location: yup.string().required("Location is required"),
     term: yup.string().required("Term is required"),
     course: yup.string().required("Course is required"),
   })}
 >
-  <p class="text-danger">{createExamError}</p>
+  <p class="text-danger">{submitError}</p>
   <DateInput
     name="examDate"
     label="Exam Date:"
