@@ -7,7 +7,9 @@ import AdminCreateCourse from "../pages/admin/CreateCourse.svelte";
 import Students from "../pages/student/Students.svelte";
 import StudyPrograms from "../pages/admin/StudyPrograms.svelte";
 import AdminTeachers from "../pages/admin/Teachers.svelte";
-import Terms from "../pages/shared/Terms.svelte";
+import AdminTerms from "../pages/admin/Terms.svelte";
+import StudentTerms from "../pages/student/Terms.svelte";
+import TeacherTerms from "../pages/teacher/Terms.svelte";
 import AdminProfile from "../pages/admin/Profile.svelte";
 import AdminCourse from "../pages/admin/Course.svelte";
 import AdminTeacher from "../pages/admin/Teacher.svelte";
@@ -48,9 +50,9 @@ const ROUTES = [
         accessibleViaSidebar: true,
         path: '/terms',
         components: {
-            [ROLE_ADMIN]: Terms,
-            [ROLE_TEACHER]: Terms,
-            [ROLE_STUDENT]: Terms
+            [ROLE_ADMIN]: AdminTerms,
+            [ROLE_TEACHER]: TeacherTerms,
+            [ROLE_STUDENT]: StudentTerms
         }
     },
     {
