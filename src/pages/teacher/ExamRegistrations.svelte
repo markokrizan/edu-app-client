@@ -46,35 +46,29 @@
     }, []);
   };
 
-  let setGradeError = "";
-
   const setGrade = async ({ grade }) => {
-    try {
-      const gradeData = {
-        student: {
-          id: currentRegistration.student.id,
-        },
-        exam: {
-          id: currentRegistration.exam.id,
-        },
-        examRegistration: {
-          id: currentRegistration.id,
-        },
-        gradeType: grade,
-      };
+    const gradeData = {
+      student: {
+        id: currentRegistration.student.id,
+      },
+      exam: {
+        id: currentRegistration.exam.id,
+      },
+      examRegistration: {
+        id: currentRegistration.id,
+      },
+      gradeType: grade,
+    };
 
-      await httpService.withAuth().request({
-        method: "POST",
-        url: "api/grades",
-        body: JSON.stringify(gradeData),
-      });
+    await httpService.withAuth().request({
+      method: "POST",
+      url: "api/grades",
+      body: JSON.stringify(gradeData),
+    });
 
-      currentRegistration = null;
+    currentRegistration = null;
 
-      window.location.reload(); // A dirty hack in order not to deal with the infinite query cache reload issue now
-    } catch (e) {
-      setGradeError = e.message;
-    }
+    window.location.reload(); // A dirty hack in order not to deal with the infinite query cache reload issue now
   };
 </script>
 
@@ -108,16 +102,21 @@
     </svelte:fragment>
   </Pager>
 
-  <Modal open={!!currentRegistration} onClose={() => currentRegistration = false} title="Set Grade">
+  <Modal
+    open={!!currentRegistration}
+    onClose={() => (currentRegistration = false)}
+    title="Set Grade"
+  >
     <Form
       let:handleChange
       let:errors
+      let:submitError
       let:form
       onSubmit={setGrade}
       class="d-flex justify-content-center align-items-center flex-column"
       initialValues={{ grade: "FIVE" }}
     >
-      <p class="text-danger">{setGradeError}</p>
+      <p class="text-danger">{submitError}</p>
       <SelectInput
         label="Select grade"
         name="grade"

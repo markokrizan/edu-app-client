@@ -21,6 +21,9 @@
         />
 
         <dl class="row">
+            <dt class="col-sm-4">Study Program:</dt>
+            <dd class="col-sm-8">{student?.studyProgram?.name}</dd>
+
             <dt class="col-sm-4">Email:</dt>
             <dd class="col-sm-8">{student.email}</dd>
 
