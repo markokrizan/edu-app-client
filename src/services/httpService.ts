@@ -19,7 +19,9 @@ class FetchHttpService implements HttpServiceInterface {
             ...(this.isAuthenticatedRequest ? { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` } : {})
         }
 
-        delete requestHeaders['Content-Type'];
+        if (body instanceof FormData) {
+            delete requestHeaders['Content-Type'];
+        }
 
         const response = await fetch(`${variables.apiBaseUri}/${url}`, { method, headers: requestHeaders, body: body});
 
