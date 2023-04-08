@@ -12,24 +12,24 @@
   const queryClient = useQueryClient();
 
   const onSubmit = async (data) => {
-    const studentData = {
+    const teacherData = {
       ...teacher,
       ...data
     };
 
-    const returnedTeacher = await httpService.withAuth().request({
+    await httpService.withAuth().request({
       method: "POST",
       url: "api/teachers",
-      body: JSON.stringify(studentData),
+      body: JSON.stringify(teacherData),
     });
 
     if (teacher?.id) {
-      await queryClient.setQueryData("teacher", () => returnedTeacher);
+      await queryClient.setQueryData("teacher", () => teacherData);
     } else {
       await queryClient.refetchQueries(["teachers"], { active: true });
     }
 
-    onComplete && onComplete(returnedTeacher);
+    onComplete && onComplete(teacherData);
   };
 </script>
 
