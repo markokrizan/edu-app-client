@@ -4,6 +4,7 @@
   import authService from "../../services/authService";
   import { userStore } from "../../store";
   import SidebarItem from "./SidebarItem.svelte";
+  import variables from "../../variables";
 
   const handleLogout = () => {
     authService.logout();
@@ -20,7 +21,7 @@
 <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100">
   <div class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
     <i class="bi bi-book-half fs-4 me-2"></i>
-    <span class="fs-4">Edu app</span>
+    <span class="fs-4">{variables.apiBaseUri}</span>
   </div>
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
