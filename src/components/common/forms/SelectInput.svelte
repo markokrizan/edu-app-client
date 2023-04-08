@@ -38,7 +38,7 @@
       bind:value={val}
       {name}
     >
-      <option>Please select an option</option>
+      <option value={""}>Please select an option</option>
       {#each options ? Object.entries(options) : [] as [optionValue, optionLabel]}
         <option value={optionValue}>{optionLabel}</option>
       {/each}

@@ -84,12 +84,12 @@
   initialValues={{
     ...course,
     // TODO: Change when multi select implemented
-    studyProgram: course?.studyPrograms[0]?.id ?? null,
-    engagements: course.engagements.map((engagement) => ({
+    studyProgram: course?.studyPrograms?.[0]?.id ?? "",
+    engagements: course?.engagements?.map((engagement) => ({
       id: engagement.id,
       engagementType: engagement.engagementType,
       teacher: engagement.teacher.id,
-    })),
+    })) || [],
   }}
 >
   <p class="text-danger">{upsertedCourseError}</p>
