@@ -17,7 +17,7 @@
 
             navigate('/profile');
         } catch (e) {
-            loginError = e.error;
+            loginError = e.message || e.error;
         }
     }
 </script>
