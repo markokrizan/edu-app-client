@@ -5,16 +5,15 @@
   import PrivateLayout from "../../layouts/PrivateLayout.svelte";
   import httpService from "../../services/httpService";
   import { userStore } from "../../store";
+  import dateService from "../../services/dateService";
 
   const user = userStore.getUser();
 
   const fetchPassedExams = (page) => {
-    return httpService
-      .withAuth()
-      .request({
-        method: "GET",
-        url: `api/students/${$user.id}/passed-exams?page=${page}`,
-      });
+    return httpService.withAuth().request({
+      method: "GET",
+      url: `api/students/${$user.id}/passed-exams?page=${page}`,
+    });
   };
 
   const columnNames = [
@@ -28,7 +27,7 @@
 
   const examToTableRow = (exam) => [
     exam.id,
-    exam.examDate,
+    dateService.formatDate(exam.examDate, "ff"),
     exam.location,
     exam.term.name,
     exam.course,

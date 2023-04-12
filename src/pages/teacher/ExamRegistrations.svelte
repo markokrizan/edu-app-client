@@ -5,6 +5,7 @@
   import Pager from "../../components/common/Pager.svelte";
   import Table from "../../components/common/Table.svelte";
   import PrivateLayout from "../../layouts/PrivateLayout.svelte";
+  import dateService from "../../services/dateService";
   import httpService from "../../services/httpService";
   import { userStore } from "../../store";
 
@@ -31,7 +32,7 @@
     examRegistration.id,
     examRegistration.exam.course.name,
     `${examRegistration.student.firstName} ${examRegistration.student.lastName}`,
-    examRegistration.createdAt,
+    dateService.formatDate(examRegistration.createdAt, "ff"),
     examRegistration,
   ];
 

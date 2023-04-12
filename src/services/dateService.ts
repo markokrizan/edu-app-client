@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-const formatDate = (rawDateString: string, format: string = "YYYY-MM-DD"): string => {
+const formatDate = (rawDateString: string, format: string = "yyyy-LL-dd"): string => {
   if (!rawDateString || !format) {
     return '';
   }
@@ -13,7 +13,7 @@ const formatDate = (rawDateString: string, format: string = "YYYY-MM-DD"): strin
     return '';
   }
   
-  return parsed.toISODate();
+  return parsed.toFormat(format);
 };
 
 export default {
