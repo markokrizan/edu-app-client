@@ -11,24 +11,20 @@
   export let onComplete = () => {};
 
   const onSubmit = async (data) => {
-    try {
-      const termData = {
-        ...term,
-        ...data,
-      };
+    const termData = {
+      ...term,
+      ...data,
+    };
 
-      const returnedTerm = await httpService.withAuth().request({
-        method: "POST",
-        url: "api/terms",
-        body: JSON.stringify(termData),
-      });
+    const returnedTerm = await httpService.withAuth().request({
+      method: "POST",
+      url: "api/terms",
+      body: JSON.stringify(termData),
+    });
 
-      window.location.reload(); // A dirty hack in order not to deal with the infinite query cache reload issue now
+    window.location.reload(); // A dirty hack in order not to deal with the infinite query cache reload issue now
 
-      onComplete && onComplete(returnedTerm);
-    } catch (e) {
-      submitError = e.message ?? e.error;
-    }
+    onComplete && onComplete(returnedTerm);
   };
 </script>
 
@@ -40,7 +36,23 @@
   validationSchema={yup.object().shape({
     name: yup.string().required("Name is required"),
     from: yup.date().required("From Date is required"),
-    to: yup.date().required("To Date is required"),
+    to: yup
+      .date()
+      .test(
+        "toAndFromRange",
+        "To date must be greater than the from date",
+        function (value) {
+          const { from } = this.parent;
+          const to = value;
+
+          if (!Date.parse(from) || !to) {
+            return true;
+          }
+
+          return value.getTime() > Date.parse(from);
+        }
+      )
+      .required("To Date is required"),
   })}
   initialValues={{
     name: term?.name,
