@@ -44,8 +44,8 @@
   })}
   initialValues={{
     name: term?.name,
-    from: dateService.formatDate(term?.from),
-    to: dateService.formatDate(term?.to),
+    from: term?.from ? dateService.formatDate(term?.from) : undefined,
+    to: term?.to ? dateService.formatDate(term?.to) : undefined,
   }}
   let:submitError
 >
