@@ -2,14 +2,18 @@ import httpService, { HttpServiceInterface } from "./httpService";
 import { userStore } from '../store';
 import type { UserStoreInterface } from "../store/user";
 import { navigate } from "svelte-navigator";
+import type { QueryClient } from "@sveltestack/svelte-query";
+import queryClient from "../store/queryClient";
 
 class AuthService {
     httpService: HttpServiceInterface
     userStore: UserStoreInterface
+    queryClient: QueryClient
 
-    constructor(httpService: HttpServiceInterface, userStore: UserStoreInterface) {
+    constructor(httpService: HttpServiceInterface, userStore: UserStoreInterface, queryClient: QueryClient) {
         this.httpService = httpService;
         this.userStore = userStore;
+        this.queryClient = queryClient;
 
         httpService.setBaseHeaders({
             'Content-Type': 'application/json'
@@ -66,9 +70,10 @@ class AuthService {
         localStorage.removeItem('accessToken');
         this.userStore.setUser(null);
         this.userStore.setToken(null);
+        this.queryClient.clear()
     }
 }
 
-const authService = new AuthService(httpService, userStore)
+const authService = new AuthService(httpService, userStore, queryClient)
 
 export default authService;
