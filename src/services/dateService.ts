@@ -1,18 +1,22 @@
 import { DateTime } from "luxon";
 
-const formatDate = (rawDateString: string, format: string = "yyyy-LL-dd"): string => {
+const formatDate = (
+  rawDateString: string,
+  format: string = "yyyy-LL-dd",
+  zone = "utc"
+): string => {
   if (!rawDateString || !format) {
-    return '';
+    return "";
   }
 
-  const parsed = DateTime.fromISO(rawDateString);
+  const parsed = DateTime.fromISO(rawDateString, { zone });
 
   if (parsed.invalid) {
     console.error(`${rawDateString} could not be parsed!`);
 
-    return '';
+    return "";
   }
-  
+
   return parsed.toFormat(format);
 };
 

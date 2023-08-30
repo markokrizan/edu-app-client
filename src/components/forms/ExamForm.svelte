@@ -52,6 +52,7 @@
     value={form?.examDate}
     error={errors?.examDate}
     class="mt-2"
+    withTime={true}
   />
   <TextInput
     name="location"
