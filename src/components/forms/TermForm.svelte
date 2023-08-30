@@ -35,7 +35,10 @@
   {onSubmit}
   validationSchema={yup.object().shape({
     name: yup.string().required("Name is required"),
-    from: yup.date().required("From Date is required"),
+    from: yup
+      .date()
+      .typeError("From Date is required")
+      .required("From Date is required"),
     to: yup
       .date()
       .test(
@@ -52,6 +55,7 @@
           return value.getTime() > Date.parse(from);
         }
       )
+      .typeError("To Date is required")
       .required("To Date is required"),
   })}
   initialValues={{
